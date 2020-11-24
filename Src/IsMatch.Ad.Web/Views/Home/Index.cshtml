@@ -1,31 +1,309 @@
-﻿@{
-    ViewBag.Title = "Home Page";
-}
-
-<div class="jumbotron">
-    <h1>ASP.NET</h1>
-    <p class="lead">ASP.NET is a free web framework for building great Web sites and Web applications using HTML, CSS and JavaScript.</p>
-    <p><a href="https://asp.net" class="btn btn-primary btn-lg">Learn more &raquo;</a></p>
+﻿<div class="col-xs-12 col-sm-10 col-md-8 col-lg-5 center-block" style="float: none;">
+    <!--弹出公告-->
+    <div class="modal fade" align="left" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header-tabs">
+                    <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                    <h4 class="modal-title" id="myModalLabel">抖音业务网站-抖音热门</h4>
+                </div>
+                <div class="modal-body">
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">知道啦</button>
+                </div>
+            </div>
+        </div>
+    </div>    
 </div>
+<div class="block full2">
+    <!--TAB标签-->
+    <div class="block-title">
 
-<div class="row">
-    <div class="col-md-4">
-        <h2>Getting started</h2>
-        <p>
-            ASP.NET MVC gives you a powerful, patterns-based way to build dynamic websites that
-            enables a clean separation of concerns and gives you full control over markup
-            for enjoyable, agile development.
-        </p>
-        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301865">Learn more &raquo;</a></p>
+        <ul class="nav nav-tabs" id="panel-heading" style="background: linear-gradient(to right,pink ,#5ccdde,#8ae68a,#e0e0e0);">
+            <li style="width: 25%;" align="center" class="active"><a href="#shop" data-toggle="tab"><span style="font-weight:bold"><i class="fa fa-shopping-bag fa-fw"></i> 下单</span></a></li>
+            <li style="width: 25%;" align="center"><a href="#search" data-toggle="tab" id="tab-query"><span style="font-weight:bold"><i class="fa fa-search"></i> 查询</span></a></li>
+            <li style="width: 25%;" align="center"><a href="#Substation" data-toggle="tab"><span style="font-weight:bold"><font color="#ff0000"><i class="fa fa-coffee fa-fw"></i> 分站</span></font></a></li>
+            <li style="width: 25%;" align="center" class="hide"><a href="#gift" data-toggle="tab"><span style="font-weight:bold"><i class="fa fa-gift fa-fw"></i> 抽奖</span></a></li>
+            <li style="width: 25%;" align="center" class="hide"><a href="#cardbuy" data-toggle="tab"><span style="font-weight:bold"><i class="glyphicon glyphicon-th"></i> 卡密</span></a></li>
+            <li style="width: 25%;" align="center" class="hide"><a href="#chat" data-toggle="tab"><span style="font-weight:bold"><i class="fa fa-comments"></i> 聊天</span></a></li>
+        </ul>
     </div>
-    <div class="col-md-4">
-        <h2>Get more libraries</h2>
-        <p>NuGet is a free Visual Studio extension that makes it easy to add, remove, and update libraries and tools in Visual Studio projects.</p>
-        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301866">Learn more &raquo;</a></p>
+    <!--TAB标签-->
+    <div class="tab-content">
+        <!--在线下单-->
+        <div class="tab-pane active" id="shop">
+            <div id="goodTypeContents">
+                暂时只能使用支付宝支付<p></p>客服QQ：9873330，客服微信：wrjyw001						<div class="form-group" id="display_selectclass">
+                    <div class="input-group">
+                        <div class="input-group-addon">选择分类</div>
+                        <select name="tid" id="cid" class="form-control"><option value="0">请选择分类</option><option value="1">【抖音优惠套餐】(真人)</option><option value="11">【抖音真人业务】</option><option value="2">【抖音特价业务】</option><option value="9">【抖音直播业务】</option><option value="8">~~~~~分割线~~~~~~~</option><option value="10">【快手优惠套餐】(真人)</option><option value="12">【快手真人业务】</option><option value="4">【快手特价业务】</option><option value="3">【快手直播业务】</option></select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="input-group">
+                        <div class="input-group-addon">选择商品</div>
+                        <select name="tid" id="tid" class="form-control" onchange="getPoint();"><option value="0">请选择商品</option></select>
+                    </div>
+                </div>
+                <div class="form-group" id="display_price" style="display:none;center;color:#4169E1;font-weight:bold">
+                    <div class="input-group">
+                        <div class="input-group-addon">商品价格</div>
+                        <input type="text" name="need" id="need" class="form-control" style="center;color:#4169E1;font-weight:bold" disabled />
+                    </div>
+                </div>
+                <div class="form-group" id="display_left" style="display:none;">
+                    <div class="input-group">
+                        <div class="input-group-addon">库存数量</div>
+                        <input type="text" name="leftcount" id="leftcount" class="form-control" disabled />
+                    </div>
+                </div>
+                <div class="form-group" id="display_num" style="display:none;">
+                    <div class="input-group">
+                        <div class="input-group-addon">下单份数</div>
+                        <span class="input-group-btn"><input id="num_min" type="button" class="btn btn-info" style="border-radius: 0px;" value="━"></span>
+                        <input id="num" name="num" class="form-control" type="number" min="1" value="1" />
+                        <span class="input-group-btn"><input id="num_add" type="button" class="btn btn-info" style="border-radius: 0px;" value="✚"></span>
+                    </div>
+                </div>
+                <div id="inputsname"></div>
+                <div id="alert_frame" class="alert alert-success animated rubberBand" style="display:none;background: linear-gradient(to right,#71D7A2,#5ED1D7);font-weight: bold;color:white;"></div>
+                <div class="form-group">
+                    <input type="submit" id="submit_buy" class="btn btn-primary btn-block" value="立即购买">
+                </div>
+                <div class="panel-body border-t" id="alert_cart" style="display:none;"><i class="fa fa-shopping-cart"></i>&nbsp;当前购物车已添加<b id="cart_count">0</b>个商品<a class="btn btn-xs btn-danger pull-right" href="javascript:openCart()">购物车列表</a></div>
+            </div>
+        </div>
+        <!--在线下单-->
+        <!--查询订单-->
+        <div class="tab-pane" id="search">
+            <div class="col-xs-12 well well-sm animation-pullUp"><span class="label label-primary">待处理</span> 说明正在努力提交到服务器！<p></p><p></p><span class="label label-success">已完成</span> 并不是刷完了只是开始刷了！<p></p><p></p><span class="label label-warning">处理中</span> 已经开始为您开单 请耐心等！<p></p><p></p><span class="label label-danger">有异常</span> 下单信息有误 联系客服处理！</div>
+            <div class="form-group">
+                <div class="input-group">
+                    <div class="input-group-btn">
+                        <select class="form-control" id="searchtype" style="padding: 6px 4px;width:90px"><option value="0">下单账号</option><option value="1">订单号</option></select>
+                    </div>
+                    <input type="text" name="qq" id="qq3" value="" class="form-control" placeholder="请输入要查询的内容（留空则显示最新订单）" onkeydown="if(event.keyCode==13){submit_query.click()}" required />
+                    <span class="input-group-btn"><a href="#cxsm" data-toggle="modal" class="btn btn-warning"><i class="glyphicon glyphicon-exclamation-sign"></i></a></span>
+                </div>
+            </div>
+            <input type="submit" id="submit_query" class="btn btn-primary btn-block" value="立即查询">
+            <div id="result2" class="form-group" style="display:none;">
+                <center><small><font color="#ff0000">手机用户可以左右滑动</font></small></center>
+                <div class="table-responsive">
+                    <table class="table table-vcenter table-condensed table-striped">
+                        <thead><tr><th>下单账号</th><th>商品名称</th><th>数量</th><th class="hidden-xs">购买时间</th><th>状态</th><th>操作</th></tr></thead>
+                        <tbody id="list">
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <br />
+        </div>
+        <!--查询订单-->
+        <!--开通分站-->
+        <div class="tab-pane" id="Substation">
+            <table class="table table-borderless table-pricing">
+                <tbody>
+                    <tr class="active">
+                        <td>
+                            <h4><i class="fa fa-cny fa-fw"></i><strong>0元</strong> / <i class="fa fa-cny fa-fw"></i><strong>300元</strong><br><small>普及版 / 专业版两种分站供你选择</small></h4>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>0元普及版享受进价9.8折</td>
+                    </tr>
+                    <tr>
+                        <td>300元专业版享受进价7折</td>
+                    </tr>
+                    <tr>
+                        <td>宝妈、学生等网络兼职首选</td>
+                    </tr>
+                    <tr>
+                        <td>分站满10元即可申请提现</td>
+                    </tr>
+                    <tr>
+                        <td><strong>轻轻松松推广日赚1000+不是梦</td>
+                    </tr>
+                    <tr class="active">
+                        <td>
+                            <a href="http://ppjs.top/user/regsite.php" target="_blank" class="btn btn-effect-ripple btn-danger"><i class="fa fa-arrow-right"></i> 马上开通</a>
+                            <a href="http://ppjs.top/user/" target="_blank" class="btn btn-effect-ripple btn-primary"><i class="fa fa-arrow-right"></i> 分站后台</a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="text-muted">
+                            <small><em>* 欢迎加入网赚大家庭！</em></small>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!--开通代理-->
+        <!--抽奖-->
+        <div class="tab-pane" id="gift">
+            <div class="panel-body text-center">
+                <div id="roll">点击下方按钮开始抽奖</div>
+                <hr>
+                <p>
+                    <a class="btn btn-info" id="start" style="display:block;">开始抽奖</a>
+                    <a class="btn btn-danger" id="stop" style="display:none;">停止</a>
+                </p>
+                <div id="result"></div><br />
+                <div class="giftlist" style="display:none;"><strong>最近中奖记录</strong><ul id="pst_1"></ul></div>
+            </div>
+        </div>
+        <!--抽奖-->
+        <!--版本介绍-->
+        <div class="modal fade" align="left" id="userjs" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 class="modal-title" id="myModalLabel">版本介绍</h4>
+                    </div>
+                    <div class="block">
+                        <div class="table-responsive">
+                            <table class="table table-borderless table-vcenter">
+                                <thead>
+                                    <tr>
+                                        <th style="width: 100px;">功能</th>
+                                        <th class="text-center" style="width: 20px;">普及版/专业版</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr class="active">
+                                        <td>专属代刷平台</td>
+                                        <td class="text-center">
+                                            <span class="btn btn-effect-ripple btn-xs btn-success"><i class="fa fa-check"></i></span>
+                                            <span class="btn btn-effect-ripple btn-xs btn-success"><i class="fa fa-check"></i></span>
+                                        </td>
+                                    </tr>
+                                    <tr class="">
+                                        <td>三种在线支付接口</td>
+                                        <td class="text-center">
+                                            <span class="btn btn-effect-ripple btn-xs btn-success"><i class="fa fa-check"></i></span>
+                                            <span class="btn btn-effect-ripple btn-xs btn-success"><i class="fa fa-check"></i></span>
+                                        </td>
+                                    </tr>
+                                    <tr class="success">
+                                        <td>专属网站域名</td>
+                                        <td class="text-center">
+                                            <span class="btn btn-effect-ripple btn-xs btn-success"><i class="fa fa-check"></i></span>
+                                            <span class="btn btn-effect-ripple btn-xs btn-success"><i class="fa fa-check"></i></span>
+                                        </td>
+                                    </tr>
+                                    <tr class="">
+                                        <td>赚取用户提成</td>
+                                        <td class="text-center">
+                                            <span class="btn btn-effect-ripple btn-xs btn-success"><i class="fa fa-check"></i></span>
+                                            <span class="btn btn-effect-ripple btn-xs btn-success"><i class="fa fa-check"></i></span>
+                                        </td>
+                                    </tr>
+                                    <tr class="info">
+                                        <td>赚取下级代理提成</td>
+                                        <td class="text-center">
+                                            <span class="btn btn-effect-ripple btn-xs btn-danger"><i class="fa fa-close"></i></span>
+                                            <span class="btn btn-effect-ripple btn-xs btn-success"><i class="fa fa-check"></i></span>
+                                        </td>
+                                    </tr>
+                                    <tr class="">
+                                        <td>设置商品价格</td>
+                                        <td class="text-center">
+                                            <span class="btn btn-effect-ripple btn-xs btn-success"><i class="fa fa-check"></i></span>
+                                            <span class="btn btn-effect-ripple btn-xs btn-success"><i class="fa fa-check"></i></span>
+                                        </td>
+                                    </tr>
+                                    <tr class="warning">
+                                        <td>设置下级代理商品价格</td>
+                                        <td class="text-center">
+                                            <span class="btn btn-effect-ripple btn-xs btn-danger"><i class="fa fa-close"></i></span>
+                                            <span class="btn btn-effect-ripple btn-xs btn-success"><i class="fa fa-check"></i></span>
+                                        </td>
+                                    </tr>
+                                    <tr class="">
+                                        <td>开通下级代理</td>
+                                        <td class="text-center">
+                                            <span class="btn btn-effect-ripple btn-xs btn-danger"><i class="fa fa-close"></i></span>
+                                            <span class="btn btn-effect-ripple btn-xs btn-success"><i class="fa fa-check"></i></span>
+                                        </td>
+                                    </tr>
+                                    <tr class="danger">
+                                        <td>赠送专属精致APP</td>
+                                        <td class="text-center">
+                                            <span class="btn btn-effect-ripple btn-xs btn-danger"><i class="fa fa-close"></i></span>
+                                            <span class="btn btn-effect-ripple btn-xs btn-success"><i class="fa fa-check"></i></span>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <center style="color: #b2b2b2;"><small><em>* 自己的能力决定着你的收入！</em></small></center>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--版本介绍-->
+        <!--卡密下单-->
+        <div class="tab-pane" id="cardbuy">
+            <div class="form-group">
+                <div class="input-group">
+                    <div class="input-group-addon">输入卡密</div>
+                    <input type="text" name="km" id="km" value="" class="form-control" onkeydown="if(event.keyCode==13){submit_checkkm.click()}" required />
+                </div>
+            </div>
+            <input type="submit" id="submit_checkkm" class="btn btn-primary btn-block" value="检查卡密">
+            <div id="km_show_frame" style="display:none;">
+                <div class="form-group">
+                    <div class="input-group">
+                        <div class="input-group-addon">商品名称</div>
+                        <input type="text" name="name" id="km_name" value="" class="form-control" disabled />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="input-group">
+                        <div class="input-group-addon" id="km_inputname">下单ＱＱ</div>
+                        <input type="text" name="inputvalue" id="km_inputvalue" value="" class="form-control" required />
+                    </div>
+                </div>
+                <div id="km_inputsname"></div>
+                <div id="km_alert_frame" class="alert alert-success animation-pullUp" style="display:none;font-weight: bold;"></div>
+                <input type="submit" id="submit_card" class="btn btn-primary btn-block" value="立即购买">
+                <div id="result1" class="form-group text-center" style="display:none;">
+                </div>
+            </div>
+            <br />
+        </div>
+        <!--卡密下单-->
+        <!--卡密下单-->
+        <div class="tab-pane" id="chat">
+        </div>
+        <!--卡密下单-->
     </div>
-    <div class="col-md-4">
-        <h2>Web Hosting</h2>
-        <p>You can easily find a web hosting company that offers the right mix of features and price for your applications.</p>
-        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301867">Learn more &raquo;</a></p>
+</div>
+<!--关于我们弹窗-->
+<div class="modal fade" align="left" id="about" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                <h4 class="modal-title" id="myModalLabel">客服与帮助</h4>
+            </div>
+            <div class="modal-body">
+                <a href="javascript:void(0)" class="widget">
+                    <center>
+                        <strong><font size="3">站长ＱＱ：9873330</font> </strong>
+                        <br />
+                        <strong><font size="2">本站域名：www.xy-door.com</font> </strong>
+                    </center>
+                    <center>
+                        <div id="demo-acc-faq" class="panel-group accordion"><div class="panel panel-trans pad-top"><a href="#demo-acc-faq1" class="text-semibold text-lg text-main collapsed" data-toggle="collapse" data-parent="#demo-acc-faq" aria-expanded="false">下单很久了都没有开始刷呢？</a><div id="demo-acc-faq1" class="mar-ver collapse" aria-expanded="false" style="height: 0px;">由于本站采用全自动订单处理，难免会出现漏单，部分单子处理时间可能会稍长一点，不过都会完成，最终解释权归本站所有。超过24小时没处理请联系客服！</div></div><div class="panel panel-trans pad-top"><a href="#demo-acc-faq2" class="text-semibold text-lg text-main collapsed" data-toggle="collapse" data-parent="#demo-acc-faq" aria-expanded="false">ＱＱ空间业务类下单方法讲解</a><div id="demo-acc-faq2" class="mar-ver collapse" aria-expanded="false">1.下单前：空间必须是所有人可访问,必须自带1~4条原创说说!<br>2.代刷期间，禁止关闭访问权限，或者删除说说，删除说说的一律由自行负责，不给予补偿。</div></div><div class="panel panel-trans pad-top"><a href="#demo-acc-faq3" class="text-semibold text-lg text-main collapsed" data-toggle="collapse" data-parent="#demo-acc-faq" aria-expanded="false">空间说说赞相关下单方法讲解</a><div id="demo-acc-faq3" class="mar-ver collapse" aria-expanded="false">1.下单前：空间必须是所有人可访问,必须自带1条原创说说!转发的说说不能刷！<br>2.在“QQ号码”栏目输入QQ号码，点击下面的获取说说ID并选择你需要刷的说说的ID，下单即可。<br>3.代刷期间，禁止关闭访问权限，或者删除说说，删除说说的一律由自行负责，不给予补偿。</div></div><div class="panel panel-trans pad-top"><a href="#demo-acc-faq4" class="text-semibold text-lg text-main collapsed" data-toggle="collapse" data-parent="#demo-acc-faq" aria-expanded="false">全民Ｋ歌业务类下单方法讲解</a><div id="demo-acc-faq4" class="mar-ver collapse" aria-expanded="false">1.打开你的全名k歌<br>2.复制你全名k歌里面的需要刷的歌曲链接<br>3.例如：你歌曲链接是：<font color="#ff0000">https://kg.qq.com/node/play?s= <font color="green">881Zbk8aCfIwA8U3</font> &amp;g_f=personal</font><br>4.然后把s=后面的 <font color="green">881Zbk8aCfIwA8U3</font> 链接填入到歌曲ID里面，然后提交购买。</div></div><div class="panel panel-trans pad-top"><a href="#demo-acc-faq5" class="text-semibold text-lg text-main collapsed" data-toggle="collapse" data-parent="#demo-acc-faq" aria-expanded="false">快手业务类代刷下单方法讲解</a><div id="demo-acc-faq5" class="mar-ver collapse" aria-expanded="false">1.需要填写用户ID和作品ID，比如<font color="#ff0000">http://www.kuaishou.com/i/photo/lwx?userId= <font color="green">294200023</font> &amp;photoId= <font color="green">1071823418</font></font> (分享作品就可以看到“复制链接”了)<br>2.用户ID就是 <font color="green">294200023</font> 作品ID就是 <font color="green">1071823418</font> ，然后在分别把用户ID和作品ID填上，请勿把两个选项填反了，不给予补单！</div></div><div class="panel panel-trans pad-top"><a href="#demo-acc-faq6" class="text-semibold text-lg text-main collapsed" data-toggle="collapse" data-parent="#demo-acc-faq" aria-expanded="false">永久ＱＱ会员/钻下单方法讲解</a><div id="demo-acc-faq6" class="mar-ver collapse" aria-expanded="false">1.下单之前，先确认输的信息是不是正确的!<br>2.Q会员/钻因为需要人工处理，所以每天不定时开刷，24小时-48小时内到账！</div></div></div>
+                    </center>
+                </a>
+            </div>
+        </div>
     </div>
 </div>
