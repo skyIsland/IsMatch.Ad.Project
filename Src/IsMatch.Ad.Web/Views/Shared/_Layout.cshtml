@@ -7,7 +7,7 @@
     <title>
         24小时抖音业务自助下单系统-在线下单粉丝点赞上热门
     </title>
-
+    <link href="~/Content/bootstrap/bootstrap.min-4.4.1.css" rel="stylesheet" />
     <link href="~/Content/assets/css/plugins.css" rel="stylesheet" />
     <link rel="stylesheet" href="~/Content/assets/css/main.css">
     <link rel="stylesheet" href="~/Content/assets/css/oneui.css">
@@ -74,60 +74,91 @@
 </head>
 <body>
     <br />
-    @RenderBody()
-    <!--div class="panel panel-info" style="display:none;">
-    <div class="panel-heading" style="background: linear-gradient(to right,#14b7ff,#5ccdde,#b221ff);"><font color="#000000"><i class="fa fa-bar-chart"></i>&nbsp;&nbsp;</font></td>
-    <tbody>
-    </table>
-    </div-->
-    <!--关于我们弹窗-->
-    <!--底部导航-->
-    <!--div class="panel panel-info" >
-    <div class="panel-heading" style="background: linear-gradient(to right,#b221ff,#14b7ff,#8ae68a);"><font color="#000000"><i class="fa fa-skyatlas"></i>&nbsp;&nbsp;<b>站点工具</b></font></h3></div>
-    <div class="">
-        </div>
-            <style>
-                     .elevator_item .hd-time-limited {
-        display: block;
-        position: fixed;
-        right: 0;
-        bottom: 445px;
-        width: 40px;
-        height: 140px;
-        background-color: skyblue;
-    } .elevator_item {
-        position: fixed;
-        right: 0;
-        bottom: 95px;
-        z-index: 11;
-    }
-    .elevator_item .feedback {
-        width: 36px;
-        height: 41px;
-        font-size: 12px;
-        padding: 5px 6px;
-        display: block;
-        border-radius: 5px;
-        text-align: center;
-        margin-top: 10px;
-        box-shadow: 0 1px 2px rgba(0,0,0,.35);
-        cursor: pointer;
-    }
-    .graHover {
-        position: relative;
-        overflow: hidden;
-    }
-      </style>  <div class="elevator_item" id="elevator_item" style="display:block;">
-       <a target="_self" class="feedback graHover" style="background-color: #fa3c63;color:#fff" href="/?cid=1" rel="nofollow">抖音套餐</a>
-    <a target="_self" class="feedback graHover" id="sign_daily" style="background-color: #ffd900;color:#383838;" rel="nofollow" href="/?cid=11">抖音真人</a> <a target="_self" class="feedback graHover" style="background-color: #AF3A9F;color:#fff;" href="/?cid=2" rel="nofollow">抖音特价</a> <a target="_self" class="feedback graHover" style="background-color: #1e6be3;color:#fff;" href="/?cid=9" rel="nofollow">抖音直播</a>
 
-    <a target="_self" class="feedback graHover" style="background-color: #3cbdfa;color:#fff;" href="/?cid=10" rel="nofollow">快手套餐</a> <a target="_self" class="feedback graHover" style="background-color: #06C17E;color:#fff" href="/?cid=12" rel="nofollow">快手真人</a> <a target="_self" class="feedback graHover" style="background-color: #ffa500;color:#fff;" href="/?cid=4" rel="nofollow">快手特价</a> <a target="_self" class="feedback graHover" style="background-color: #fa3c63;color:#fff" href="/?cid=3" rel="nofollow">快手直播</a><a target="_self" class="feedback graHover" style="background-color: #1e6be3;color:#fff;" href="/user/regsite.php" rel="nofollow">开通分站</a>
-    </div>  <center>  <div class="panel-body"><span style="font-weight:bold">CopyRight <i class="fa fa-heart text-danger"></i> 2018 <a href="/">抖音业务网站-抖音热门</a> | </span><a class="" href="#about" data-toggle="modal"><span style="font-weight:bold">客服与帮助</span></a> | </span><a rel="external nofollow" class="http://www.miitbeian.gov.cn" href="http://www.miitbeian.gov.cn" data-toggle="modal"><span style="font-weight:bold">渝ICP备18004528号</span></a></center>
+    <div class="col-xs-12 col-sm-10 col-md-8 col-lg-5 center-block" style="float: none;">
+        <!--弹出公告-->
+        <div class="modal fade" align="left" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header-tabs">
+                        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                        <h4 class="modal-title" id="myModalLabel">抖音业务网站-抖音热门</h4>
+                    </div>
+                    <div class="modal-body">
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">知道啦</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--弹出公告-->
+        <!--div class="widget">
+        <!--logo-->
+        <!--div class="widget-content themed-background-flat text-center" style="background-image: url(https://ww2.sinaimg.cn/large/a15b4afegy1fpv512r11pj20oo08ctcq.jpg);background-size: 100% 100%;">
+                <a href="javascript:void(0)">
+                    <img class="img-circle m-b-xs" style="border: 2px solid #1281FF; margin-left:3px; margin-right:3px;" src="//static/images/logo.png>&spec=100" width="70px" height="70px" alt="Avatar">
+                </a>
+           </div>
+          <aside id="php_text-8" class="widget php_text wow fadeInUp" data-wow-delay="3.0s"><div class="textwidget widget-text"><style type="text/css">#container-box-1{color:#526372;text-transform:uppercase;width:100%;font-size:16px;line-height:50px;text-align:center}#flip-box-1{overflow:hidden;height:50px}#flip-box-1 div{height:50px}#flip-box-1>div>div{color:#fff;display:inline-block;text-align:center;height:50px;width:100%}#flip-box-1 div:first-child{animation:show 8s linear infinite}.flip-box-1-1{background-color:#FF7E40}.flip-box-1-2{background-color:#C166FF}.flip-box-1-3{background-color:#737373}.flip-box-1-4{background-color:#4ec7f3}.flip-box-1-5{background-color:#42c58a}.flip-box-1-6{background-color:#F1617D}@@keyframes show{0%{margin-top:-300px}5%{margin-top:-250px}16.666%{margin-top:-250px}21.666%{margin-top:-200px}33.332%{margin-top:-200px}38.332%{margin-top:-150px}49.998%{margin-top:-150px}54.998%{margin-top:-100px}66.664%{margin-top:-100px}71.664%{margin-top:-50px}83.33%{margin-top:-50px}88.33%{margin-top:0px}99.996%{margin-top:0px}100%{margin-top:300px}}</style><div id="container-box-1"><div class="container-box-1-1"></div><div id="flip-box-1"><div><div class="flip-box-1-1">本网站所有业务正常接单中</div></div><div><div class="flip-box-1-2">如有订单问题请联系本站客服</div></div><div><div class="flip-box-1-3">站长QQ：9873330</div></div><div><div class="flip-box-1-4">诚信代刷全网各种网络业务</div></div><div><div class="flip-box-1-5">一起合作共赢，我们期待您的加入</div></div><div><div class="flip-box-1-6">记得收藏本网站，方便下次使用喔</div></div><div><div class="flip-box-1-1">本站客服QQ:9873330</div></div></div><div class="container-box-1-2"></div><div class="clear"></div></div></div>
+        <p>
+        <li class="list-group-item"><span class="btn btn-danger btn-xs">1</span>24小时都可以下单。
+        </li>
+        </li><li class="list-group-item"><span class="btn btn-danger btn-xs">2</span>欢迎您的到来
+        </li>
+        <div class="btn-group btn-group-justified"><!--免费拉圈-->
+        <!--div class="modal fade" align="left" id="circles" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                <h4 class="modal-title" id="myModalLabel">免费拉圈圈99+</h4>
+              </div>
+              <div class="modal-body">
+                <div class="form-group">
+                    <div class="input-group"><div class="input-group-addon">请输入QQ</div>
+                        <input type="text" name="qq" id="qq4" value="" class="form-control" required/>
+                    </div>
+                </div>
+                <input type="submit" id="submit_lqq" class="btn btn-primary btn-block" value="立即提交">
+                <div id="result3" class="form-group text-center" style="display:none;"></div>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!--免费拉圈-->
+        <!--/div-->
+        @RenderBody()
+        <!--关于我们弹窗-->
+        <div class="modal fade" align="left" id="about" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                        <h4 class="modal-title" id="myModalLabel">客服与帮助</h4>
+                    </div>
+                    <div class="modal-body">
+                        <a href="javascript:void(0)" class="widget">
+                            <center>
+                                <strong><font size="3">站长ＱＱ：9873330</font> </strong>
+                                <br />
+                                <strong><font size="2">本站域名：www.xy-door.com</font> </strong>
+                            </center>
+                            <center>
+                                <div id="demo-acc-faq" class="panel-group accordion"><div class="panel panel-trans pad-top"><a href="#demo-acc-faq1" class="text-semibold text-lg text-main collapsed" data-toggle="collapse" data-parent="#demo-acc-faq" aria-expanded="false">下单很久了都没有开始刷呢？</a><div id="demo-acc-faq1" class="mar-ver collapse" aria-expanded="false" style="height: 0px;">由于本站采用全自动订单处理，难免会出现漏单，部分单子处理时间可能会稍长一点，不过都会完成，最终解释权归本站所有。超过24小时没处理请联系客服！</div></div><div class="panel panel-trans pad-top"><a href="#demo-acc-faq2" class="text-semibold text-lg text-main collapsed" data-toggle="collapse" data-parent="#demo-acc-faq" aria-expanded="false">ＱＱ空间业务类下单方法讲解</a><div id="demo-acc-faq2" class="mar-ver collapse" aria-expanded="false">1.下单前：空间必须是所有人可访问,必须自带1~4条原创说说!<br>2.代刷期间，禁止关闭访问权限，或者删除说说，删除说说的一律由自行负责，不给予补偿。</div></div><div class="panel panel-trans pad-top"><a href="#demo-acc-faq3" class="text-semibold text-lg text-main collapsed" data-toggle="collapse" data-parent="#demo-acc-faq" aria-expanded="false">空间说说赞相关下单方法讲解</a><div id="demo-acc-faq3" class="mar-ver collapse" aria-expanded="false">1.下单前：空间必须是所有人可访问,必须自带1条原创说说!转发的说说不能刷！<br>2.在“QQ号码”栏目输入QQ号码，点击下面的获取说说ID并选择你需要刷的说说的ID，下单即可。<br>3.代刷期间，禁止关闭访问权限，或者删除说说，删除说说的一律由自行负责，不给予补偿。</div></div><div class="panel panel-trans pad-top"><a href="#demo-acc-faq4" class="text-semibold text-lg text-main collapsed" data-toggle="collapse" data-parent="#demo-acc-faq" aria-expanded="false">全民Ｋ歌业务类下单方法讲解</a><div id="demo-acc-faq4" class="mar-ver collapse" aria-expanded="false">1.打开你的全名k歌<br>2.复制你全名k歌里面的需要刷的歌曲链接<br>3.例如：你歌曲链接是：<font color="#ff0000">https://kg.qq.com/node/play?s= <font color="green">881Zbk8aCfIwA8U3</font> &amp;g_f=personal</font><br>4.然后把s=后面的 <font color="green">881Zbk8aCfIwA8U3</font> 链接填入到歌曲ID里面，然后提交购买。</div></div><div class="panel panel-trans pad-top"><a href="#demo-acc-faq5" class="text-semibold text-lg text-main collapsed" data-toggle="collapse" data-parent="#demo-acc-faq" aria-expanded="false">快手业务类代刷下单方法讲解</a><div id="demo-acc-faq5" class="mar-ver collapse" aria-expanded="false">1.需要填写用户ID和作品ID，比如<font color="#ff0000">http://www.kuaishou.com/i/photo/lwx?userId= <font color="green">294200023</font> &amp;photoId= <font color="green">1071823418</font></font> (分享作品就可以看到“复制链接”了)<br>2.用户ID就是 <font color="green">294200023</font> 作品ID就是 <font color="green">1071823418</font> ，然后在分别把用户ID和作品ID填上，请勿把两个选项填反了，不给予补单！</div></div><div class="panel panel-trans pad-top"><a href="#demo-acc-faq6" class="text-semibold text-lg text-main collapsed" data-toggle="collapse" data-parent="#demo-acc-faq" aria-expanded="false">永久ＱＱ会员/钻下单方法讲解</a><div id="demo-acc-faq6" class="mar-ver collapse" aria-expanded="false">1.下单之前，先确认输的信息是不是正确的!<br>2.Q会员/钻因为需要人工处理，所以每天不定时开刷，24小时-48小时内到账！</div></div></div>
+                            </center>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
-    <!--底部导航-->
-    <!--/div-->
     <script src="~/Scripts/jquery-1.9.1.min.js"></script>
-    <script src="~/Scripts/bootstrap.min.js"></script>
+    <script src="~/Content/Cube.js"></script>
+    <script src="~/Content/bootstrap/bootstrap.min-4.4.1.js"></script>
     <script src="~/Content/assets/js/layer/layer.js"></script>
     <script src="~/Content/assets/js/appui/app.js"></script>
     <script src="~/Content/assets/js/appui/plugins.js"></script>

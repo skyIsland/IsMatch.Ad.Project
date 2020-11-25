@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IsMatch.Ad.Web", "IsMatch.A
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IsMatch.Models", "IsMatch.Models\IsMatch.Models.csproj", "{7F2935D8-7214-45A5-9BC8-04767DAC96D3}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IsMatch.Common", "IsMatch.Common\IsMatch.Common.csproj", "{AE8F5DE1-F2C0-4B76-B9CD-9DA42707D2CE}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{7F2935D8-7214-45A5-9BC8-04767DAC96D3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7F2935D8-7214-45A5-9BC8-04767DAC96D3}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7F2935D8-7214-45A5-9BC8-04767DAC96D3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AE8F5DE1-F2C0-4B76-B9CD-9DA42707D2CE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AE8F5DE1-F2C0-4B76-B9CD-9DA42707D2CE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AE8F5DE1-F2C0-4B76-B9CD-9DA42707D2CE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AE8F5DE1-F2C0-4B76-B9CD-9DA42707D2CE}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
