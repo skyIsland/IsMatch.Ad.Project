@@ -22,7 +22,7 @@ namespace IsMatch.Models
         /// <summary>编号</summary>
         [DisplayName("编号")]
         [Description("编号")]
-        [DataObjectField(true, true, false, 50)]
+        [DataObjectField(true, false, false, 50)]
         [BindColumn("ID", "编号", "")]
         public String ID { get => _ID; set { if (OnPropertyChanging("ID", value)) { _ID = value; OnPropertyChanged("ID"); } } }
 

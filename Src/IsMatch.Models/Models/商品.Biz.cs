@@ -93,7 +93,11 @@ namespace IsMatch.Models
         [XmlIgnore, IgnoreDataMember]
         //[ScriptIgnore]
         public Category Category => Extends.Get(nameof(Category), k => Category.FindByID(CategoryID));
-      
+
+        [DisplayName("分类")]
+        [Map(__.CategoryID, typeof(Category), "ID")]
+        public string CategoryName => Category?.Name;
+
         #endregion
 
         #region 扩展查询

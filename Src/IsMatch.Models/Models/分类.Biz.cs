@@ -51,22 +51,28 @@ namespace IsMatch.Models
         }
 
         ///// <summary>首次连接数据库时初始化数据，仅用于实体类重载，用户不应该调用该方法</summary>
-        //[EditorBrowsable(EditorBrowsableState.Never)]
-        //protected override void InitData()
-        //{
-        //    // InitData一般用于当数据表没有数据时添加一些默认数据，该实体类的任何第一次数据库操作都会触发该方法，默认异步调用
-        //    if (Meta.Session.Count > 0) return;
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        protected override void InitData()
+        {
+            // InitData一般用于当数据表没有数据时添加一些默认数据，该实体类的任何第一次数据库操作都会触发该方法，默认异步调用
+            if (Meta.Session.Count > 0) return;
 
-        //    if (XTrace.Debug) XTrace.WriteLine("开始初始化Category[分类]数据……");
+            if (XTrace.Debug) XTrace.WriteLine("开始初始化Category[分类]数据……");
 
-        //    var entity = new Category();
-        //    entity.ID = 0;
-        //    entity.CreateTime = DateTime.Now;
-        //    entity.Remark = "abc";
-        //    entity.Insert();
+            var list = new List<string> { "【抖音优惠套餐】(真人)", "【抖音真人业务】",
+                "【抖音特价业务】", "【抖音直播业务】", "【快手优惠套餐】(真人)", "【快手真人业务】","【快手特价业务】","【快手直播业务】" };
 
-        //    if (XTrace.Debug) XTrace.WriteLine("完成初始化Category[分类]数据！");
-        //}
+            foreach (var name in list)
+            {
+                var entity = new Category();
+                entity.Name = name;
+                entity.CreateTime = DateTime.Now;
+                entity.Remark = string.Empty;
+                entity.Insert();
+            }
+
+            if (XTrace.Debug) XTrace.WriteLine("完成初始化Category[分类]数据！");
+        }
 
         ///// <summary>已重载。基类先调用Valid(true)验证数据，然后在事务保护内调用OnInsert</summary>
         ///// <returns></returns>

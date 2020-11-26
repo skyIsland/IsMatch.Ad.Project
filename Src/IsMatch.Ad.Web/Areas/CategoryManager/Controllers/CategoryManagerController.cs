@@ -16,7 +16,7 @@ namespace IsMatch.Ad.Web.Areas.CategoryManager.Controllers
         public ActionResult GetList()
         {
             var result = Category.FindAll();
-            return Json(1, "", result.Select(p => new { Text = p.Name, Value = p.ID }));
+            return Json(1, "", result.OrderBy(p => p.ID).Select(p => new { Text = p.Name, Value = p.ID }));
         }
     }
 }

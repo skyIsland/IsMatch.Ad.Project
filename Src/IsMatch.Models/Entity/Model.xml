@@ -12,6 +12,7 @@
     <Columns>
       <Column Name="ID" DataType="Int32" Identity="True" PrimaryKey="True" Description="编号" />
       <Column Name="CategoryID" DataType="Int32" Description="分类ID" />
+      <Column Name="State" DataType="Int32" Description="是否启用" />
       <Column Name="Name" DataType="String" Master="True" Description="名称" />
       <Column Name="Price" DataType="Double" Description="价格" />
       <Column Name="CreateTime" DataType="DateTime" Nullable="False" Description="时间" />
@@ -20,7 +21,7 @@
   </Table>
   <Table Name="Orders" Description="订单">
     <Columns>
-      <Column Name="ID" DataType="String" Identity="True" PrimaryKey="True" Nullable="False" Description="编号" />
+      <Column Name="ID" DataType="String" PrimaryKey="True" Nullable="False" Description="编号" />
       <Column Name="GoodsID" DataType="Int32" Description="商品ID" />
       <Column Name="SerialNumber" DataType="String" Description="订单号" />
       <Column Name="PlaceOrder" DataType="String" Description="下单账号" />

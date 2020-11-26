@@ -146,6 +146,8 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Areas\CategoryManager\CategoryManagerAreaRegistration.cs" />
     <Compile Include="Areas\CategoryManager\Controllers\CategoryManagerController.cs" />
+    <Compile Include="Areas\GoodsManager\Controllers\GoodsManagerController.cs" />
+    <Compile Include="Areas\GoodsManager\GoodsManagerAreaRegistration.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Entity\地区.Biz.cs" />
     <Compile Include="Entity\地区.cs" />
@@ -312,6 +314,9 @@
     <Folder Include="Areas\CategoryManager\Data\" />
     <Folder Include="Areas\CategoryManager\Views\CategoryManager\" />
     <Folder Include="Areas\CategoryManager\Views\Shared\" />
+    <Folder Include="Areas\GoodsManager\Data\" />
+    <Folder Include="Areas\GoodsManager\Views\GoodsManager\" />
+    <Folder Include="Areas\GoodsManager\Views\Shared\" />
     <Folder Include="Models\" />
     <Folder Include="Views\CategoryManager\" />
   </ItemGroup>
@@ -337,6 +342,7 @@
     <Content Include="Content\bootstrap\fonts\glyphicons-halflings-regular.ttf" />
     <Content Include="Content\bootstrap\fonts\glyphicons-halflings-regular.woff" />
     <Content Include="Content\bootstrap\fonts\glyphicons-halflings-regular.woff2" />
+    <Content Include="Areas\GoodsManager\Views\web.config" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>

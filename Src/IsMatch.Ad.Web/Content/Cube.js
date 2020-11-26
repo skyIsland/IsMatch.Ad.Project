@@ -137,6 +137,7 @@ function doActionNew(methodName, actionUrl, actionParamter, sucCallback) {
         return;
     }
 
+    var loadIndex;
     $.ajax({
         url: actionUrl,
         type: methodName,
@@ -148,7 +149,8 @@ function doActionNew(methodName, actionUrl, actionParamter, sucCallback) {
             //console.log(ex);
         },
         beforeSend: function () {
-            tips('正在操作中，请稍候...', 0, 2000);
+            //tips('正在操作中，请稍候...', 0, 2000);
+            loadIndex = layer.load(2);
         },
         success: function (s) {
             if (s.code == 1) {
@@ -160,7 +162,8 @@ function doActionNew(methodName, actionUrl, actionParamter, sucCallback) {
             }           
         },
         complete: function (result) {
-          
+            console.dir(result);
+            layer.close(loadIndex);
         }
     });
 }
