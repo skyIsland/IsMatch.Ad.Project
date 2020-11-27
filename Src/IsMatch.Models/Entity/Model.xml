@@ -12,7 +12,7 @@
     <Columns>
       <Column Name="ID" DataType="Int32" Identity="True" PrimaryKey="True" Description="编号" />
       <Column Name="CategoryID" DataType="Int32" Description="分类ID" />
-      <Column Name="State" DataType="Int32" Description="是否启用" />
+      <Column Name="State" DataType="String" Description="是否启用" />
       <Column Name="Name" DataType="String" Master="True" Description="名称" />
       <Column Name="Price" DataType="Double" Description="价格" />
       <Column Name="CreateTime" DataType="DateTime" Nullable="False" Description="时间" />

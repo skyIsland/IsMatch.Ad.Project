@@ -60,6 +60,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Enum\StateEnum.cs" />
     <Compile Include="Models\分类.Biz.cs" />
     <Compile Include="Models\分类.cs" />
     <Compile Include="Models\商品.Biz.cs" />

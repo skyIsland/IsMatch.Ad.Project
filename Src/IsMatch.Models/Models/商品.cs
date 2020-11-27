@@ -34,6 +34,14 @@ namespace IsMatch.Models
         [BindColumn("CategoryID", "分类ID", "")]
         public Int32 CategoryID { get => _CategoryID; set { if (OnPropertyChanging("CategoryID", value)) { _CategoryID = value; OnPropertyChanged("CategoryID"); } } }
 
+        private String _State;
+        /// <summary>是否启用</summary>
+        [DisplayName("是否启用")]
+        [Description("是否启用")]
+        [DataObjectField(false, false, true, 50)]
+        [BindColumn("State", "是否启用", "")]
+        public String State { get => _State; set { if (OnPropertyChanging("State", value)) { _State = value; OnPropertyChanged("State"); } } }
+
         private String _Name;
         /// <summary>名称</summary>
         [DisplayName("名称")]
@@ -79,6 +87,7 @@ namespace IsMatch.Models
                 {
                     case "ID": return _ID;
                     case "CategoryID": return _CategoryID;
+                    case "State": return _State;
                     case "Name": return _Name;
                     case "Price": return _Price;
                     case "CreateTime": return _CreateTime;
@@ -92,6 +101,7 @@ namespace IsMatch.Models
                 {
                     case "ID": _ID = value.ToInt(); break;
                     case "CategoryID": _CategoryID = value.ToInt(); break;
+                    case "State": _State = Convert.ToString(value); break;
                     case "Name": _Name = Convert.ToString(value); break;
                     case "Price": _Price = value.ToDouble(); break;
                     case "CreateTime": _CreateTime = value.ToDateTime(); break;
@@ -111,6 +121,9 @@ namespace IsMatch.Models
 
             /// <summary>分类ID</summary>
             public static readonly Field CategoryID = FindByName("CategoryID");
+
+            /// <summary>是否启用</summary>
+            public static readonly Field State = FindByName("State");
 
             /// <summary>名称</summary>
             public static readonly Field Name = FindByName("Name");
@@ -135,6 +148,9 @@ namespace IsMatch.Models
 
             /// <summary>分类ID</summary>
             public const String CategoryID = "CategoryID";
+
+            /// <summary>是否启用</summary>
+            public const String State = "State";
 
             /// <summary>名称</summary>
             public const String Name = "Name";

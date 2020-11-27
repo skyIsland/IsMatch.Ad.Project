@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace IsMatch.Common
 {
-    public class Utils
+    public static class Utils
     {
         #region 按字符串位数补0
 
@@ -43,6 +43,32 @@ namespace IsMatch.Common
                 return CharTxt;
             }
         }
+        #endregion
+
+        #region 转为枚举
+
+        /// <summary>
+        /// 获取实例
+        /// </summary>
+        /// <typeparam name="T">枚举</typeparam>
+        /// <param name="member">成员名或值,
+        /// 范例:Enum1枚举有成员A=0,则传入"A"或"0"获取 Enum1.A</param>
+        public static T GetEnumInstance<T>(object member)
+        {
+            if (member != null)
+            {
+                string value = member.ToString();
+                if (string.IsNullOrWhiteSpace(value))
+                    throw new ArgumentNullException("member");
+                return (T)System.Enum.Parse(typeof(T), value, true);
+            }
+            return default(T);
+        }
+
+        public static T ToEnum<T>(this string str)
+        {
+            return GetEnumInstance<T>(str);
+        }        
         #endregion
     }
 }

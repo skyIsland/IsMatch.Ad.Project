@@ -10,6 +10,8 @@ using System.Threading.Tasks;
 using System.Web;
 using System.Web.Script.Serialization;
 using System.Xml.Serialization;
+using IsMatch.Common;
+using IsMatch.Models.Enum;
 using NewLife;
 using NewLife.Data;
 using NewLife.Log;
@@ -97,6 +99,10 @@ namespace IsMatch.Models
         [DisplayName("分类")]
         [Map(__.CategoryID, typeof(Category), "ID")]
         public string CategoryName => Category?.Name;
+
+        [DisplayName("是否启用")]
+        //[Map(__.State, typeof(StateEnum), "ID")]
+        public string StateName => Extends.Get(nameof(StateEnum), k => this.State?.ToEnum<StateEnum>().GetDescription());
 
         #endregion
 
