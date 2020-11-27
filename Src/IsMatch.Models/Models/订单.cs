@@ -50,6 +50,14 @@ namespace IsMatch.Models
         [BindColumn("PlaceOrder", "下单账号", "")]
         public String PlaceOrder { get => _PlaceOrder; set { if (OnPropertyChanging("PlaceOrder", value)) { _PlaceOrder = value; OnPropertyChanged("PlaceOrder"); } } }
 
+        private String _VideoNo;
+        /// <summary>作品Id</summary>
+        [DisplayName("作品Id")]
+        [Description("作品Id")]
+        [DataObjectField(false, false, true, 500)]
+        [BindColumn("VideoNo", "作品Id", "")]
+        public String VideoNo { get => _VideoNo; set { if (OnPropertyChanging("VideoNo", value)) { _VideoNo = value; OnPropertyChanged("VideoNo"); } } }
+
         private Int32 _Nums;
         /// <summary>数量</summary>
         [DisplayName("数量")]
@@ -105,6 +113,7 @@ namespace IsMatch.Models
                     case "GoodsID": return _GoodsID;
                     case "SerialNumber": return _SerialNumber;
                     case "PlaceOrder": return _PlaceOrder;
+                    case "VideoNo": return _VideoNo;
                     case "Nums": return _Nums;
                     case "Status": return _Status;
                     case "Ip": return _Ip;
@@ -121,6 +130,7 @@ namespace IsMatch.Models
                     case "GoodsID": _GoodsID = value.ToInt(); break;
                     case "SerialNumber": _SerialNumber = Convert.ToString(value); break;
                     case "PlaceOrder": _PlaceOrder = Convert.ToString(value); break;
+                    case "VideoNo": _VideoNo = Convert.ToString(value); break;
                     case "Nums": _Nums = value.ToInt(); break;
                     case "Status": _Status = Convert.ToString(value); break;
                     case "Ip": _Ip = Convert.ToString(value); break;
@@ -147,6 +157,9 @@ namespace IsMatch.Models
 
             /// <summary>下单账号</summary>
             public static readonly Field PlaceOrder = FindByName("PlaceOrder");
+
+            /// <summary>作品Id</summary>
+            public static readonly Field VideoNo = FindByName("VideoNo");
 
             /// <summary>数量</summary>
             public static readonly Field Nums = FindByName("Nums");
@@ -180,6 +193,9 @@ namespace IsMatch.Models
 
             /// <summary>下单账号</summary>
             public const String PlaceOrder = "PlaceOrder";
+
+            /// <summary>作品Id</summary>
+            public const String VideoNo = "VideoNo";
 
             /// <summary>数量</summary>
             public const String Nums = "Nums";

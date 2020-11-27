@@ -18,7 +18,28 @@ namespace IsMatch.Ad.Web.Areas.GoodsManager.Controllers
         public ActionResult GetList(string categoryId)
         {
             var result = Goods.FindAll($"CategoryID={categoryId} and State = '{StateEnum.Enabled.ToString()}'", "ID", null, 0, 0);
-            return Json(1, "", result.OrderBy(p => p.ID).Select(p => new { Text = p.Name, Value = p.ID }));
+            var list = result.OrderBy(p => p.ID).Select(p =>
+            new GoodsVM
+            {
+                Text = p.Name,
+                Value = p.ID,
+                Price = p.Price,
+                Remark = p.Remark
+            });
+            return Json(1, "", list);
+        }
+
+        [AllowAnonymous]
+        public ActionResult GetById(int goodsId)
+        {
+            var result = Goods.FindByID(goodsId);    
+            
+            if(result == null)
+            {
+                return Json(0, "商品信息获取失败。", "");
+            }
+
+            return Json(1, "", result);
         }
     }
 }

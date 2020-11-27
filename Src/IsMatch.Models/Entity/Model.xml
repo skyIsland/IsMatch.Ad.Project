@@ -25,6 +25,7 @@
       <Column Name="GoodsID" DataType="Int32" Description="商品ID" />
       <Column Name="SerialNumber" DataType="String" Description="订单号" />
       <Column Name="PlaceOrder" DataType="String" Description="下单账号" />
+      <Column Name="VideoNo" DataType="String" Length="500" Description="作品Id" />
       <Column Name="Nums" DataType="Int32" Description="数量" />
       <Column Name="Status" DataType="String" Description="状态" />
       <Column Name="Ip" DataType="String" Description="下单ip" />

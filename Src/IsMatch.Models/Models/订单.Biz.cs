@@ -48,7 +48,7 @@ namespace IsMatch.Models
             if (!HasDirty) return;
 
             // 这里验证参数范围，建议抛出参数异常，指定参数名，前端用户界面可以捕获参数异常并聚焦到对应的参数输入框
-            if (ID.IsNullOrEmpty()) throw new ArgumentNullException(nameof(ID), "编号不能为空！");
+            //if (ID.IsNullOrEmpty()) throw new ArgumentNullException(nameof(ID), "编号不能为空！");
 
             // 建议先调用基类方法，基类方法会做一些统一处理
             base.Valid(isNew);
@@ -107,7 +107,9 @@ namespace IsMatch.Models
         [XmlIgnore, IgnoreDataMember]
         //[ScriptIgnore]
         public Goods Goods => Extends.Get(nameof(Goods), k => Goods.FindByID(GoodsID));
-        
+
+        public double Money => Goods.Price * this.Nums;
+
         #endregion
 
         #region 扩展查询
@@ -153,7 +155,7 @@ namespace IsMatch.Models
         {
             var result = string.Empty;
             var time = DateTime.Today.ToString("yyyyMM");
-            var old = FindAll("SerialNumber like '" + time + "%'", "Code desc", "", 0, 1).ToList().FirstOrDefault();
+            var old = FindAll("SerialNumber like '" + time + "%'", "SerialNumber desc", "", 0, 1).ToList().FirstOrDefault();
             if (old == null)
             {
                 result = time + "0001";

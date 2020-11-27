@@ -145,7 +145,7 @@ function doActionNew(methodName, actionUrl, actionParamter, sucCallback) {
         dataType: 'json',
         data: actionParamter,
         error: function (ex) {
-            tips('请求异常！', 0, 1000);
+            layer.alert('请求异常！');
             //console.log(ex);
         },
         beforeSend: function () {
@@ -162,7 +162,7 @@ function doActionNew(methodName, actionUrl, actionParamter, sucCallback) {
             }           
         },
         complete: function (result) {
-            console.dir(result);
+            //console.dir(result);
             layer.close(loadIndex);
         }
     });

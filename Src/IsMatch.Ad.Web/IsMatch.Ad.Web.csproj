@@ -148,6 +148,8 @@
     <Compile Include="Areas\CategoryManager\Controllers\CategoryManagerController.cs" />
     <Compile Include="Areas\GoodsManager\Controllers\GoodsManagerController.cs" />
     <Compile Include="Areas\GoodsManager\GoodsManagerAreaRegistration.cs" />
+    <Compile Include="Areas\OrdersManager\Controllers\OrdersManagerController.cs" />
+    <Compile Include="Areas\OrdersManager\OrdersManagerAreaRegistration.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Entity\地区.Biz.cs" />
     <Compile Include="Entity\地区.cs" />
@@ -202,6 +204,8 @@
     <Content Include="Content\assets\css\main.css" />
     <Content Include="Content\assets\css\oneui.css" />
     <Content Include="Content\assets\css\plugins.css" />
+    <Content Include="Content\assets\img\Alipay.jpg" />
+    <Content Include="Content\assets\img\WeiXin.jpg" />
     <Content Include="Content\assets\js\appui\app.js" />
     <Content Include="Content\assets\js\layer\layer.js" />
     <Content Include="Content\assets\js\appui\plugins.js" />
@@ -316,6 +320,9 @@
     <Folder Include="Areas\CategoryManager\Views\Shared\" />
     <Folder Include="Areas\GoodsManager\Data\" />
     <Folder Include="Areas\GoodsManager\Views\Shared\" />
+    <Folder Include="Areas\OrdersManager\Data\" />
+    <Folder Include="Areas\OrdersManager\Views\OrdersManager\" />
+    <Folder Include="Areas\OrdersManager\Views\Shared\" />
     <Folder Include="Models\" />
     <Folder Include="Views\CategoryManager\" />
   </ItemGroup>
@@ -344,6 +351,7 @@
     <Content Include="Areas\GoodsManager\Views\web.config" />
     <Content Include="Areas\GoodsManager\Views\GoodsManager\_Form_Body.cshtml" />
     <Content Include="Areas\GoodsManager\Views\GoodsManager\_List_Data.cshtml" />
+    <Content Include="Areas\OrdersManager\Views\web.config" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
