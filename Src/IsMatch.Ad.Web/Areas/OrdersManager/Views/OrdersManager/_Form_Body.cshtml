@@ -1,0 +1,84 @@
+﻿@model Orders
+@using IsMatch.Models
+@using NewLife;
+@using NewLife.Web;
+@using XCode;
+@using XCode.Configuration;
+@using XCode.Membership;
+@using NewLife.Cube;
+@{
+    var entity = Model;
+    var fields = ViewBag.Fields as IList<FieldItem>;
+    var isNew = (entity as IEntity).IsNullKey;
+}
+<div class="form-group col-xs-12 col-sm-6 col-lg-4">
+    <label class="control-label col-xs-3 col-sm-3">编号</label>
+    <div class="input-group col-xs-9 col-sm-9">
+        <input class="form-control" id="ID" name="ID" type="text" value="@entity.ID" />
+    </div>
+</div>
+<div class="form-group col-xs-12 col-sm-6 col-lg-4">
+    <label class="control-label col-xs-3 col-sm-3">商品</label>
+    <div class="input-group col-xs-9 col-sm-5">
+        @Html.ForDropDownList("GoodsID", Orders.Meta.AllFields.First(e=>e.Name=="GoodsName").Map.Provider.GetDataSource(), @entity.GoodsID)
+    </div>
+    @*<span class="hidden-xs col-sm-4"><span class="middle">商品ID</span></span>*@
+</div>
+<div class="form-group col-xs-12 col-sm-6 col-lg-4">
+    <label class="control-label col-xs-3 col-sm-3">订单号</label>
+    <div class="input-group col-xs-9 col-sm-9">
+        <input class="form-control" id="SerialNumber" name="SerialNumber" type="text" value="@entity.SerialNumber" />
+    </div>
+</div>
+<div class="form-group col-xs-12 col-sm-6 col-lg-4">
+    <label class="control-label col-xs-3 col-sm-3">下单账号</label>
+    <div class="input-group col-xs-9 col-sm-9">
+        <input class="form-control" id="PlaceOrder" name="PlaceOrder" type="text" value="@entity.PlaceOrder" />
+    </div>
+</div>
+<div class="form-group col-xs-12 col-sm-6 col-lg-4">
+    <label class="control-label col-xs-3 col-sm-3">作品Id</label>
+    <div class="input-group col-xs-9 col-sm-9">
+        <textarea class="form-control" cols="20" id="VideoNo" name="VideoNo" rows="3">@entity.VideoNo</textarea>
+    </div>
+</div>
+<div class="form-group col-xs-12 col-sm-6 col-lg-4">
+    <label class="control-label col-xs-3 col-sm-3">数量</label>
+    <div class="input-group col-xs-9 col-sm-9">
+        @Html.TextBox("Nums", @entity.Nums, new { @class = "form-control", role="number" })
+    </div>
+</div>
+<div class="form-group col-xs-12 col-sm-6 col-lg-4">
+    <label class="control-label col-xs-3 col-sm-3">状态</label>
+    <div class="input-group col-xs-9 col-sm-9">
+        <input class="form-control" id="Status" name="Status" type="text" value="@entity.Status" />
+    </div>
+</div>
+<div class="form-group col-xs-12 col-sm-6 col-lg-4">
+    <label class="control-label col-xs-3 col-sm-3">下单ip</label>
+    <div class="input-group col-xs-9 col-sm-9">
+        <input class="form-control" id="Ip" name="Ip" type="text" value="@entity.Ip" />
+    </div>
+</div>
+<div class="form-group col-xs-12 col-sm-6 col-lg-4">
+    <label class="control-label col-xs-3 col-sm-3">时间</label>
+    <div class="input-group col-xs-9 col-sm-9">
+        <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+        @Html.TextBox("CreateTime", @entity.CreateTime.ToFullString(""), new { @class = "form-control date form_datetime" })
+    </div>
+</div>
+<div class="form-group col-xs-12 col-sm-6 col-lg-4">
+    <label class="control-label col-xs-3 col-sm-3">详细信息</label>
+    <div class="input-group col-xs-9 col-sm-9">
+        <textarea class="form-control" cols="20" id="Remark" name="Remark" rows="3">@entity.Remark</textarea>
+    </div>
+</div>
+@Html.Partial("_Form_Footer", entity)
+@if (this.Has(PermissionFlags.Insert, PermissionFlags.Update))
+{
+    <div class="clearfix form-actions col-sm-12 col-md-12">
+        <label class="control-label col-xs-4 col-sm-5 col-md-5"></label>
+        <button type="submit" class="btn btn-success btn-sm"><i class="glyphicon glyphicon-@(isNew ? "plus" : "save")"></i><strong>@(isNew ? "新增" : "保存")</strong></button>
+        <button type="button" class="btn btn-danger btn-sm" onclick="history.go(-1);"><i class="glyphicon glyphicon-remove"></i><strong>取消</strong></button>
+    </div>
+}

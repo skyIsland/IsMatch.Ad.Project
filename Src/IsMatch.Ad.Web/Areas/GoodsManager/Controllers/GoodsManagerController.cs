@@ -17,7 +17,7 @@ namespace IsMatch.Ad.Web.Areas.GoodsManager.Controllers
         [AllowAnonymous]
         public ActionResult GetList(string categoryId)
         {
-            var result = Goods.FindAll($"CategoryID={categoryId} and State = '{StateEnum.Enabled.ToString()}'", "ID", null, 0, 0);
+            var result = Goods.FindAll($"CategoryID={categoryId} and State = 1", "ID", null, 0, 0);
             var list = result.OrderBy(p => p.ID).Select(p =>
             new GoodsVM
             {

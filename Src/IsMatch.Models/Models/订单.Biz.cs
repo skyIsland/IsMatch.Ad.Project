@@ -108,6 +108,10 @@ namespace IsMatch.Models
         //[ScriptIgnore]
         public Goods Goods => Extends.Get(nameof(Goods), k => Goods.FindByID(GoodsID));
 
+        [DisplayName("商品")]
+        [Map(__.GoodsID, typeof(Goods), "ID")]
+        public string GoodsName => Goods?.Name;
+
         public double Money => Goods.Price * this.Nums;
 
         #endregion

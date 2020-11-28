@@ -321,7 +321,6 @@
     <Folder Include="Areas\GoodsManager\Data\" />
     <Folder Include="Areas\GoodsManager\Views\Shared\" />
     <Folder Include="Areas\OrdersManager\Data\" />
-    <Folder Include="Areas\OrdersManager\Views\OrdersManager\" />
     <Folder Include="Areas\OrdersManager\Views\Shared\" />
     <Folder Include="Models\" />
     <Folder Include="Views\CategoryManager\" />
@@ -352,6 +351,7 @@
     <Content Include="Areas\GoodsManager\Views\GoodsManager\_Form_Body.cshtml" />
     <Content Include="Areas\GoodsManager\Views\GoodsManager\_List_Data.cshtml" />
     <Content Include="Areas\OrdersManager\Views\web.config" />
+    <Content Include="Areas\OrdersManager\Views\OrdersManager\_Form_Body.cshtml" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
