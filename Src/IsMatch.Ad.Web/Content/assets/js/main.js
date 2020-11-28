@@ -47,13 +47,16 @@ function getGoods() {
 }
 
 function getGoodsDetail() {
+    $('#num').val(1);
+    $('#need').val('');
+
     var ele = $('#tid');
     var price = ele.find('option:selected').data('price');
     var remark = ele.find('option:selected').data('remark');
 
     $('#need').val('￥' + price.toFixed(2) + "元").data('price', price);
     $('#alert_frame').html(remark);
-    $('#num').val(1);
+   
     $('#VideoNo').val();
 
     $('#display_price').show();
