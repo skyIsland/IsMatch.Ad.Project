@@ -62,6 +62,8 @@
   <ItemGroup>
     <Compile Include="Enum\StateEnum.cs" />
     <Compile Include="Models\GoodsVM.cs" />
+    <Compile Include="Models\公告.Biz.cs" />
+    <Compile Include="Models\公告.cs" />
     <Compile Include="Models\分类.Biz.cs" />
     <Compile Include="Models\分类.cs" />
     <Compile Include="Models\商品.Biz.cs" />
@@ -92,6 +94,7 @@
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>Build_netcore.log</LastGenOutput>
     </Content>
+    <Content Include="Entity\Notice.xml" />
     <Content Include="Entity\Model.xml" />
   </ItemGroup>
   <ItemGroup>
