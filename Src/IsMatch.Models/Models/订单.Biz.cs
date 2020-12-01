@@ -38,6 +38,7 @@ namespace IsMatch.Models
 
             // 过滤器 UserModule、TimeModule、IPModule
             Meta.Modules.Add<TimeModule>();
+            Meta.Modules.Add<IPModule>();
         }
 
         /// <summary>验证并修补数据，通过抛出异常的方式提示验证失败。</summary>
@@ -60,6 +61,11 @@ namespace IsMatch.Models
             {
                 this.ID = Guid.NewGuid().ToString();
                 this.SerialNumber = this.GetSerialNumber();
+            }
+
+            if (this.Nums > 0)
+            {
+                this.Money = Goods.Price * this.Nums;
             }
         }
 
@@ -112,7 +118,14 @@ namespace IsMatch.Models
         [Map(__.GoodsID, typeof(Goods), "ID")]
         public string GoodsName => Goods?.Name;
 
-        public double Money => Goods.Price * this.Nums;
+        /// <summary>对应状态</summary>
+        [XmlIgnore, IgnoreDataMember]
+        //[ScriptIgnore]
+        public Parameter StatusType => Extends.Get(nameof(Parameter), k => Parameter.FindByID(Status));
+
+        [DisplayName("状态")]
+        [Map(__.Status, typeof(Parameter), "ID")]
+        public string StatusName => StatusType?.Name;
 
         #endregion
 

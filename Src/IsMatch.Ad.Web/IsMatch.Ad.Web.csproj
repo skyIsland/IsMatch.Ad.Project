@@ -148,6 +148,8 @@
     <Compile Include="Areas\CategoryManager\Controllers\CategoryManagerController.cs" />
     <Compile Include="Areas\GoodsManager\Controllers\GoodsManagerController.cs" />
     <Compile Include="Areas\GoodsManager\GoodsManagerAreaRegistration.cs" />
+    <Compile Include="Areas\NoticeManager\Controllers\NoticeManagerController.cs" />
+    <Compile Include="Areas\NoticeManager\NoticeManagerAreaRegistration.cs" />
     <Compile Include="Areas\OrdersManager\Controllers\OrdersManagerController.cs" />
     <Compile Include="Areas\OrdersManager\OrdersManagerAreaRegistration.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -320,6 +322,9 @@
     <Folder Include="Areas\CategoryManager\Views\Shared\" />
     <Folder Include="Areas\GoodsManager\Data\" />
     <Folder Include="Areas\GoodsManager\Views\Shared\" />
+    <Folder Include="Areas\NoticeManager\Data\" />
+    <Folder Include="Areas\NoticeManager\Views\NoticeManager\" />
+    <Folder Include="Areas\NoticeManager\Views\Shared\" />
     <Folder Include="Areas\OrdersManager\Data\" />
     <Folder Include="Areas\OrdersManager\Views\Shared\" />
     <Folder Include="Models\" />
@@ -352,6 +357,7 @@
     <Content Include="Areas\GoodsManager\Views\GoodsManager\_List_Data.cshtml" />
     <Content Include="Areas\OrdersManager\Views\web.config" />
     <Content Include="Areas\OrdersManager\Views\OrdersManager\_Form_Body.cshtml" />
+    <Content Include="Areas\NoticeManager\Views\web.config" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>

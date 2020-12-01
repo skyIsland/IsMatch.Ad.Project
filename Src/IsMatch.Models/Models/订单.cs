@@ -66,21 +66,29 @@ namespace IsMatch.Models
         [BindColumn("Nums", "数量", "")]
         public Int32 Nums { get => _Nums; set { if (OnPropertyChanging("Nums", value)) { _Nums = value; OnPropertyChanged("Nums"); } } }
 
-        private String _Status;
+        private Int32 _Status;
         /// <summary>状态</summary>
         [DisplayName("状态")]
         [Description("状态")]
-        [DataObjectField(false, false, true, 50)]
+        [DataObjectField(false, false, false, 0)]
         [BindColumn("Status", "状态", "")]
-        public String Status { get => _Status; set { if (OnPropertyChanging("Status", value)) { _Status = value; OnPropertyChanged("Status"); } } }
+        public Int32 Status { get => _Status; set { if (OnPropertyChanging("Status", value)) { _Status = value; OnPropertyChanged("Status"); } } }
 
-        private String _Ip;
-        /// <summary>下单ip</summary>
-        [DisplayName("下单ip")]
-        [Description("下单ip")]
+        private Double _Money;
+        /// <summary>金额</summary>
+        [DisplayName("金额")]
+        [Description("金额")]
+        [DataObjectField(false, false, false, 0)]
+        [BindColumn("Money", "金额", "")]
+        public Double Money { get => _Money; set { if (OnPropertyChanging("Money", value)) { _Money = value; OnPropertyChanged("Money"); } } }
+
+        private String _CreateIP;
+        /// <summary>下单Ip</summary>
+        [DisplayName("下单Ip")]
+        [Description("下单Ip")]
         [DataObjectField(false, false, true, 50)]
-        [BindColumn("Ip", "下单ip", "")]
-        public String Ip { get => _Ip; set { if (OnPropertyChanging("Ip", value)) { _Ip = value; OnPropertyChanged("Ip"); } } }
+        [BindColumn("CreateIP", "下单Ip", "")]
+        public String CreateIP { get => _CreateIP; set { if (OnPropertyChanging("CreateIP", value)) { _CreateIP = value; OnPropertyChanged("CreateIP"); } } }
 
         private DateTime _CreateTime;
         /// <summary>时间</summary>
@@ -116,7 +124,8 @@ namespace IsMatch.Models
                     case "VideoNo": return _VideoNo;
                     case "Nums": return _Nums;
                     case "Status": return _Status;
-                    case "Ip": return _Ip;
+                    case "Money": return _Money;
+                    case "CreateIP": return _CreateIP;
                     case "CreateTime": return _CreateTime;
                     case "Remark": return _Remark;
                     default: return base[name];
@@ -132,8 +141,9 @@ namespace IsMatch.Models
                     case "PlaceOrder": _PlaceOrder = Convert.ToString(value); break;
                     case "VideoNo": _VideoNo = Convert.ToString(value); break;
                     case "Nums": _Nums = value.ToInt(); break;
-                    case "Status": _Status = Convert.ToString(value); break;
-                    case "Ip": _Ip = Convert.ToString(value); break;
+                    case "Status": _Status = value.ToInt(); break;
+                    case "Money": _Money = value.ToDouble(); break;
+                    case "CreateIP": _CreateIP = Convert.ToString(value); break;
                     case "CreateTime": _CreateTime = value.ToDateTime(); break;
                     case "Remark": _Remark = Convert.ToString(value); break;
                     default: base[name] = value; break;
@@ -167,8 +177,11 @@ namespace IsMatch.Models
             /// <summary>状态</summary>
             public static readonly Field Status = FindByName("Status");
 
-            /// <summary>下单ip</summary>
-            public static readonly Field Ip = FindByName("Ip");
+            /// <summary>金额</summary>
+            public static readonly Field Money = FindByName("Money");
+
+            /// <summary>下单Ip</summary>
+            public static readonly Field CreateIP = FindByName("CreateIP");
 
             /// <summary>时间</summary>
             public static readonly Field CreateTime = FindByName("CreateTime");
@@ -203,8 +216,11 @@ namespace IsMatch.Models
             /// <summary>状态</summary>
             public const String Status = "Status";
 
-            /// <summary>下单ip</summary>
-            public const String Ip = "Ip";
+            /// <summary>金额</summary>
+            public const String Money = "Money";
+
+            /// <summary>下单Ip</summary>
+            public const String CreateIP = "CreateIP";
 
             /// <summary>时间</summary>
             public const String CreateTime = "CreateTime";

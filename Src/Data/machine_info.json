@@ -1,14 +1,14 @@
 {
-    "OSName": "Windows 10 教育版",
+    "OSName": "Windows 10 企业版 LTSC",
     "OSVersion": "10.0.17763.0",
-    "Product": "To Be Filled By O.E.M.",
-    "Processor": "AMD FX(tm)-8300 Eight-Core Processor",
-    "CpuID": "178BFBFF00600F20",
+    "Product": "",
+    "Processor": "Intel(R) Core(TM) i5-8400 CPU @ 2.80GHz",
+    "CpuID": "BFEBFBFF000906EA",
     "UUID": "03000200-0400-0500-0006-000700080009",
     "Guid": "0-6c732c92-89cc-4245-a06f-b50aac8dadcf",
-    "DiskID": "6VV5ZYF5,DLLS17A1403051",
-    "Memory": 17179136000,
-    "AvailableMemory": 9150066688,
+    "DiskID": "C3B7079506FD00015829,WD-WCC6Y2EXC0P9",
+    "Memory": 17036120064,
+    "AvailableMemory": 2313940992,
     "CpuRate": 0,
     "Temperature": 0
 }

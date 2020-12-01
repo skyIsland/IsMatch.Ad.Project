@@ -11,7 +11,7 @@
 
     // 加载模型文件，得到数据表
     var option = new BuilderOption();
-    var tables = ClassBuilder.LoadModels("Notice.xml", option, out var atts);
+    var tables = ClassBuilder.LoadModels("Model.xml", option, out var atts);
     EntityBuilder.FixModelFile(null, option, atts, tables);
 
     // 生成实体类
