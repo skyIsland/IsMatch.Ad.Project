@@ -1,4 +1,35 @@
-﻿<div class="block full2">
+﻿@{
+    var noticeList = IsMatch.Models.Notice.FindAll();
+}
+<div class="panel panel-default">
+    <div class="panel-body" style="text-align: center;">
+        <img src="~/Content/assets/img/logo.png" style="max-width: 100%;">
+    </div>
+</div>
+<div class="panel panel-info">
+    <div class="list-group-item reed" style="background:#64b2ca;"><h3 class="panel-title"><font color="#fff"><i class="fa fa-volume-up"></i>&nbsp;&nbsp;<b>站点公告</b></font></h3></div>
+    @*<div class="”list-group-item" reed”=""><marquee scrollamount="”10″" direction="”left”" align="”Middle”" style="font-size:24px;font-family:'arial black', 'avant garde';color:#ff0000;">欢迎来到本站 | 所有网址均可互通，建议收藏避免丢失  LK98.cn    |    LK668.cn     |  04k05.com </marquee></div>*@
+    <p>
+    </p>
+    <ul>
+        @if (noticeList.Any())
+        {
+            foreach (var item in noticeList)
+            {
+                <li class="list-group-item">@item.Title</li>
+            }
+        }
+        else
+        {
+            <li class="list-group-item">本站暂无公告</li>
+        }
+        @*<li class="list-group-item"><span class="btn btn-info btn-xs">蓝客</span>   抖音工作室自助直销,  需要转发分享，作品流量5万以下的都可加客服免费赠送</li>
+            <li class="list-group-item"><span class="btn btn-info btn-xs">诚信</span>  本站秉承“诚信为本，高效为先，专业为王”的经营理念，用心服务每一位客户</li>
+            <li class="list-group-item"><span class="btn btn-primary btn-xs">专业</span>  互联网峰值期间，骗子横行、低价泛滥各种机器号操作套路遍地都是，引起帐号被封 被限流就得不偿失了，请勿贪小便宜吃大亏<a href="./user/regsite.php"></a></li>
+            <li class="list-group-item"><span class="btn btn-danger btn-xs">质量</span>  高质量粉丝都能带动作品曝光引流，不掉粉，一年无限次售后，自带标签的粉丝，可智能定位筛选<a href="./user/regsite.php"></a></li>*@
+    </ul>
+</div>
+<div class="block full2">
     <!--TAB标签-->
     <div class="block-title">
 
@@ -62,7 +93,7 @@
                         </div>
                     </div>
                 </div>
-                <div id="alert_frame" class="alert alert-success animated rubberBand" style="display:none;background: linear-gradient(to right,#71D7A2,#5ED1D7);font-weight: bold;color:white;"></div>                
+                <div id="alert_frame" class="alert alert-success animated rubberBand" style="display:none;background: linear-gradient(to right,#71D7A2,#5ED1D7);font-weight: bold;color:white;"></div>
                 <div class="alert alert-success" id="display_SerialNumber" role="alert" style="display:none;">
 
                 </div>
@@ -93,16 +124,16 @@
                     <div class="input-group-btn">
                         <select class="form-control" id="searchtype" style="padding: 6px 4px;width:90px"><option value="1">订单号</option></select>
                     </div>
-                    <input type="text" name="qq" id="qq3" value="" class="form-control" placeholder="请输入要查询的内容（留空则显示最新订单）" onkeydown="if(event.keyCode==13){submit_query.click()}" required />
-                    <span class="input-group-btn"><a href="#cxsm" data-toggle="modal" class="btn btn-warning"><i class="glyphicon glyphicon-exclamation-sign"></i></a></span>
+                    <input type="text" name="qq" id="qq3" value="" class="form-control" placeholder="请输入要查询的内容" onkeydown="if(event.keyCode==13){submit_query.click()}" required />
+                    @*<span class="input-group-btn"><a href="#cxsm" data-toggle="modal" class="btn btn-warning" style="width:50px;height:30px;margin-left:10px;"><i class="glyphicon glyphicon-exclamation-sign"></i></a></span>*@
                 </div>
             </div>
-            <input type="submit" id="submit_query" class="btn btn-primary btn-block" value="立即查询">
+            <input type="button" id="submit_query" class="btn btn-primary btn-block" onclick="queryOrder()" value="立即查询">
             <div id="result2" class="form-group" style="display:none;">
                 <center><small><font color="#ff0000">手机用户可以左右滑动</font></small></center>
                 <div class="table-responsive">
                     <table class="table table-vcenter table-condensed table-striped">
-                        <thead><tr><th>下单账号</th><th>商品名称</th><th>数量</th><th class="hidden-xs">购买时间</th><th>状态</th><th>操作</th></tr></thead>
+                        <thead><tr><th>下单账号</th><th>商品名称</th><th>数量</th><th class="hidden-xs">购买时间</th><th>状态</th>@*<th>操作</th>*@</tr></thead>
                         <tbody id="list">
                         </tbody>
                     </table>

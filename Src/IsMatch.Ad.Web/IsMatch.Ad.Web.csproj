@@ -207,6 +207,8 @@
     <Content Include="Content\assets\css\oneui.css" />
     <Content Include="Content\assets\css\plugins.css" />
     <Content Include="Content\assets\img\Alipay.jpg" />
+    <Content Include="Content\assets\img\bj.png" />
+    <Content Include="Content\assets\img\logo.png" />
     <Content Include="Content\assets\img\WeiXin.jpg" />
     <Content Include="Content\assets\js\appui\app.js" />
     <Content Include="Content\assets\js\layer\layer.js" />

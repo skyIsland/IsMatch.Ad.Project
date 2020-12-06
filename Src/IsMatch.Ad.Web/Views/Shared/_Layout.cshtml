@@ -8,6 +8,7 @@
         24小时抖小音业务自助下单系统-在线下单粉丝点赞上热门
     </title>
     <link href="~/Content/bootstrap/bootstrap.min-4.4.1.css" rel="stylesheet" />
+    <link href="//s1.pstatp.com/cdn/expire-1-M/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
     <link href="~/Content/assets/css/plugins.css" rel="stylesheet" />
     <link rel="stylesheet" href="~/Content/assets/css/main.css">
     <link rel="stylesheet" href="~/Content/assets/css/oneui.css">
@@ -17,14 +18,10 @@
       <script src="respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
     <style>
-        ion: fixed;
-        width: 100%;
-        background-repeat: no-repeat;
-        background-size: cover;
-        z-index: -1;
-        top: 0;
-        left: 0; background-position: center 0%;
-        height: 100%; background-image: url(assets/img/bj.png);background-attachment: fixed;
+
+        body {
+            background: #ecedf0 url("../../Content/assets/img/bj.png") fixed;
+            background-repeat: repeat;
         }
 
         img.logo {
@@ -68,6 +65,9 @@
 
         @@media (min-width: 768px) oneui.css:1048 .col-sm-10 {
             width: 95%;
+        }
+
+        .list-group-item {
         }
     </style>
     @RenderSection("header", false)

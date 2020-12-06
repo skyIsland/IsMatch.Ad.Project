@@ -61,6 +61,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Enum\StateEnum.cs" />
+    <Compile Include="Models\OrdersVM.cs" />
     <Compile Include="Models\GoodsVM.cs" />
     <Compile Include="Models\公告.Biz.cs" />
     <Compile Include="Models\公告.cs" />

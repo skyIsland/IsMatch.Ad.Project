@@ -1,5 +1,5 @@
-﻿function renderSelect(data, callback) {
-    var html = '<option value=0>请选择</option>';
+﻿function renderSelect(title, data, callback) {
+    var html = '<option value=0>请选择' + title + '</option>';
     data.forEach(p => {
         var attr = (callback && typeof callback == 'function' ? callback(p) : '');
         html += '<option ' + attr + ' value=' + p.Value + '>' + p.Text + '</option>';
@@ -13,7 +13,7 @@ function getCategory() {
 
     doActionNew(methodName, actionUrl, actionParamter, function (data) {
         if (data && data.length > 0) {
-            var html = renderSelect(data);
+            var html = renderSelect('分类', data);
             $('#cid').html(html);
             $('#cid').val(0);
         }
@@ -37,7 +37,7 @@ function getGoods() {
     if (categoryId) {
         doActionNew(methodName, actionUrl, actionParamter, function (data) {
             if (data && data.length > 0) {
-                var html = renderSelect(data, function (d) {
+                var html = renderSelect('商品', data, function (d) {
                     return ` data-price="${d.Price}" data-remark="${d.Remark}" `;
                 });
                 $('#tid').html(html);
@@ -56,7 +56,7 @@ function getGoodsDetail() {
 
     $('#need').val('￥' + price.toFixed(2) + "元").data('price', price);
     $('#alert_frame').html(remark);
-   
+
     $('#VideoNo').val();
 
     $('#display_price').show();
@@ -84,6 +84,67 @@ function commit() {
             $('#display_SerialNumber').html(`您的订单号为：${data}，请及时扫码支付！有疑问请添加小二微信/QQ进行沟通`).show();
             layer.close(index);
         });
+    });
+}
+
+function queryOrder() {
+    var searchtype = $('#searchtype').val();
+    var keyword = $('#qq3').val();
+
+    if (!keyword) {
+        layer.alert('请先输入内容。', { icon: 2, anim: 6 });
+        return;
+    }
+
+    $('#submit_query').val('Loading');
+    $('#result2').hide();
+    $('#list').html('');
+
+    var methodName = "GET";
+    var actionUrl = "/Home/GetOrderStatus";
+    var actionParamter = { searchtype, keyword };
+
+    doActionNew(methodName, actionUrl, actionParamter, function (data) {
+        var status;
+        $.each(data, function (i, item) {
+            if (item.Status == 1)
+                status = '<span class="label label-success">已完成</span>';
+            else if (item.Status == 2)
+                status = '<span class="label label-warning">处理中</span>';
+            else if (item.Status == 3)
+                status = '<span class="label label-danger">异常</span>';
+            else if (item.Status == 4)
+                status = '<font color=red>已退款</font>';
+            else
+                status = '<span class="label label-primary">待处理</span>';
+            $('#list').append('<tr><td>' + item.PlaceOrder + '</td><td>' + item.GoodsName + '</td><td>' + item.Nums + '</td><td class="hidden-xs">' + item.CreateTime + '</td><td>' + status + '</td></tr>');
+            if (item.result != null) {
+                //if (item.Status == 3) {
+                //    $('#list').append('<tr><td colspan=6><font color="red">异常原因：' + item.result + '</font></td></tr>');
+                //}
+            }
+        });
+        var addstr = '';
+        $('#list').append('<tr><td colspan=6>' + addstr + '</td></tr>');
+        if ($(window).width() > 768 && typeof querymode === "undefined") {
+            if ($('#list2').length > 0) {
+                $('#list2').html($('#list').html());
+            } else {
+                layer.open({
+                    type: 1,
+                    shadeClose: true,
+                    shade: false,
+                    zIndex: 90,
+                    area: [";max-width:90%;min-width:800px", ";max-height:100%"],
+                    title: '查询订单',
+                    skin: 'layui-layer-rim',
+                    content: '<div class="table-responsive"><table class="table table-vcenter table-condensed table-striped"><thead><tr><th>下单账号</th><th>商品名称</th><th>数量</th><th class="hidden-xs">购买时间</th><th>状态</th></tr></thead><tbody id="list2">' + $('#list').html() + '</tbody></table></div>'
+                });
+            }
+        } else {
+            $("#result2").slideDown();
+        }
+        $('#submit_query').val('立即查询');
     });
 }
 
