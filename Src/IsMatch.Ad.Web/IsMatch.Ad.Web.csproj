@@ -323,6 +323,12 @@
     <Content Include="Areas\OrdersManager\Views\web.config" />
     <Content Include="Areas\OrdersManager\Views\OrdersManager\_Form_Body.cshtml" />
     <Content Include="Areas\NoticeManager\Views\web.config" />
+    <Content Include="Config\Core.config" />
+    <Content Include="Config\Cube.config" />
+    <Content Include="Config\DataCache.config" />
+    <Content Include="Config\OAuth.config" />
+    <Content Include="Config\Sys.config" />
+    <Content Include="Config\XCode.config" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>

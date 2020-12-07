@@ -24,7 +24,7 @@ function getCategory() {
     $('#alert_frame').hide();
     $('#display_PlaceOrder').hide();
     $('#display_SerialNumber').hide();
-    $('#display_ercode').hide();
+    $('#display_ercode,.buy-goods').hide();
 
 }
 
@@ -146,6 +146,19 @@ function queryOrder() {
         }
         $('#submit_query').val('立即查询');
     });
+}
+
+function createOrder() {// 立即下单
+    var videoId = $('#VideoNo').val();
+    if (videoId) {
+        $('#display_ercode,.buy-goods').show();
+    } else {
+        alertErr('请先填写作品Id。');
+    }
+}
+
+function alertErr(msg) {
+    layer.alert(msg, { icon: 2, anim: 6 });
 }
 
 $(function () {
