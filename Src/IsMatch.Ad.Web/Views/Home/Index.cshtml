@@ -11,12 +11,13 @@
     @*<div class="”list-group-item" reed”=""><marquee scrollamount="”10″" direction="”left”" align="”Middle”" style="font-size:24px;font-family:'arial black', 'avant garde';color:#ff0000;">欢迎来到本站 | 所有网址均可互通，建议收藏避免丢失  LK98.cn    |    LK668.cn     |  04k05.com </marquee></div>*@
     <p>
     </p>
-    <ul style="width:98%;">
+    <ul style="width:98%;" id="ul_notice">
         @if (noticeList.Any())
         {
             foreach (var item in noticeList)
             {
-                <li class="list-group-item">@item.Title</li>
+                <marquee scrollamount="10" direction="left" align="center" style="font-size:17px;font-family:'arial black', 'avant garde';color:#ff0000;">@item.Title </marquee>
+                @*<li class="list-group-item">@item.Title</li>*@
             }
         }
         else
@@ -24,9 +25,9 @@
             <li class="list-group-item">本站暂无公告</li>
         }
         @*<li class="list-group-item"><span class="btn btn-info btn-xs">蓝客</span>   抖音工作室自助直销,  需要转发分享，作品流量5万以下的都可加客服免费赠送</li>
-            <li class="list-group-item"><span class="btn btn-info btn-xs">诚信</span>  本站秉承“诚信为本，高效为先，专业为王”的经营理念，用心服务每一位客户</li>
-            <li class="list-group-item"><span class="btn btn-primary btn-xs">专业</span>  互联网峰值期间，骗子横行、低价泛滥各种机器号操作套路遍地都是，引起帐号被封 被限流就得不偿失了，请勿贪小便宜吃大亏<a href="./user/regsite.php"></a></li>
-            <li class="list-group-item"><span class="btn btn-danger btn-xs">质量</span>  高质量粉丝都能带动作品曝光引流，不掉粉，一年无限次售后，自带标签的粉丝，可智能定位筛选<a href="./user/regsite.php"></a></li>*@
+        <li class="list-group-item"><span class="btn btn-info btn-xs">诚信</span>  本站秉承“诚信为本，高效为先，专业为王”的经营理念，用心服务每一位客户</li>
+        <li class="list-group-item"><span class="btn btn-primary btn-xs">专业</span>  互联网峰值期间，骗子横行、低价泛滥各种机器号操作套路遍地都是，引起帐号被封 被限流就得不偿失了，请勿贪小便宜吃大亏<a href="./user/regsite.php"></a></li>
+        <li class="list-group-item"><span class="btn btn-danger btn-xs">质量</span>  高质量粉丝都能带动作品曝光引流，不掉粉，一年无限次售后，自带标签的粉丝，可智能定位筛选<a href="./user/regsite.php"></a></li>*@
     </ul>
 </div>
 <div class="block full2">
