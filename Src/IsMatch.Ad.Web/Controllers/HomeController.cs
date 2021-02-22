@@ -15,6 +15,11 @@ namespace IsMatch.Ad.Web.Controllers
             return View();
         }
 
+        public ActionResult DxyIndex()
+        {
+            return View();
+        }
+
         public ActionResult About()
         {
             ViewBag.Message = "Your application description page.";

@@ -1,6 +1,6 @@
 {
     "OSName": "Windows 10 教育版",
-    "OSVersion": "10.0.17763.0",
+    "OSVersion": "10.0.19041.0",
     "Product": "To Be Filled By O.E.M.",
     "Processor": "AMD FX(tm)-8300 Eight-Core Processor",
     "CpuID": "178BFBFF00600F20",
@@ -8,7 +8,7 @@
     "Guid": "0-6c732c92-89cc-4245-a06f-b50aac8dadcf",
     "DiskID": "6VV5ZYF5,DLLS17A1403051",
     "Memory": 17179136000,
-    "AvailableMemory": 10761428992,
+    "AvailableMemory": 10719039488,
     "CpuRate": 0,
     "Temperature": 0
 }

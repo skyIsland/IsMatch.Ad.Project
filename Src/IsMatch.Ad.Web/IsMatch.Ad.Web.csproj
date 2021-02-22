@@ -236,6 +236,22 @@
     <Content Include="Content\DateTimePicker\bootstrap-datetimepicker.min.js" />
     <Content Include="Content\DateTimePicker\locales\bootstrap-datetimepicker.zh-CN.js" />
     <Content Include="Content\echarts.min.js" />
+    <Content Include="Content\images\index\bottomat.png" />
+    <Content Include="Content\images\index\caricn.png" />
+    <Content Include="Content\images\index\choose.png" />
+    <Content Include="Content\images\index\commenticn.png" />
+    <Content Include="Content\images\index\commentsicn.png" />
+    <Content Include="Content\images\index\feedback.png" />
+    <Content Include="Content\images\index\Liveillustration.png" />
+    <Content Include="Content\images\index\Live_sentiment.png" />
+    <Content Include="Content\images\index\Popularicn.png" />
+    <Content Include="Content\images\index\Scrollingicn.png" />
+    <Content Include="Content\images\index\Videoicn.png" />
+    <Content Include="Content\images\index\Videoillustration.png" />
+    <Content Include="Content\images\index\xak.png" />
+    <Content Include="Content\images\index\xiaoa.jpg" />
+    <Content Include="Content\images\index\xiaoai1.png" />
+    <Content Include="Content\images\index\zxbtn.png" />
     <Content Include="Content\images\logo\Alipay.png" />
     <Content Include="Content\images\logo\Baidu.png" />
     <Content Include="Content\images\logo\Ding.png" />
@@ -330,6 +346,7 @@
     <Content Include="Config\Sys.config" />
     <Content Include="Config\XCode.config" />
     <None Include="packages.config" />
+    <Content Include="Views\Home\DxyIndex.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\IsMatch.Models\IsMatch.Models.csproj">

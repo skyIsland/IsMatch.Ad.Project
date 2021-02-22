@@ -1,0 +1,342 @@
+﻿@{
+    var noticeList = IsMatch.Models.Notice.FindAll().OrderByDescending(p => p.CreateTime);
+
+    var noticeListNew = noticeList.Any() ? noticeList.Take(noticeList.Count() - 1) : noticeList;
+    var firstNotice = noticeList.LastOrDefault() ?? new IsMatch.Models.Notice();
+
+    ViewBag.Title = "抖小音";
+}
+<div class="panel panel-default">
+    <div class="panel-body" style="text-align: center;">
+        <img src="~/Content/assets/img/logo.png" style="max-width: 100%;">
+    </div>
+</div>
+<div class="panel panel-info">
+    <div class="list-group-item reed" style="background:#64b2ca;"><h3 class="panel-title"><font color="#fff"><i class="fa fa-volume-up"></i>&nbsp;&nbsp;<b>站点公告</b></font></h3></div>
+    <div class="”list-group-item" reed”="">
+        <marquee scrollamount="”10″" direction="”left”" align="”Middle”" style="font-size:24px;font-family:'arial black', 'avant garde';color:#ff0000;">
+            @firstNotice.Title
+        </marquee>
+    </div>
+    <p>
+    </p>
+    <ul style="width:98%;" id="ul_notice">
+        @if (noticeListNew.Any())
+        {
+            foreach (var item in noticeListNew)
+            {
+                <li class="list-group-item">@item.Title</li>
+            }
+        }
+        else
+        {
+            <li class="list-group-item">本站暂无公告</li>
+        }
+        @*<li class="list-group-item"><span class="btn btn-info btn-xs">蓝客</span>   抖音工作室自助直销,  需要转发分享，作品流量5万以下的都可加客服免费赠送</li>
+            <li class="list-group-item"><span class="btn btn-info btn-xs">诚信</span>  本站秉承“诚信为本，高效为先，专业为王”的经营理念，用心服务每一位客户</li>
+            <li class="list-group-item"><span class="btn btn-primary btn-xs">专业</span>  互联网峰值期间，骗子横行、低价泛滥各种机器号操作套路遍地都是，引起帐号被封 被限流就得不偿失了，请勿贪小便宜吃大亏<a href="./user/regsite.php"></a></li>
+            <li class="list-group-item"><span class="btn btn-danger btn-xs">质量</span>  高质量粉丝都能带动作品曝光引流，不掉粉，一年无限次售后，自带标签的粉丝，可智能定位筛选<a href="./user/regsite.php"></a></li>*@
+    </ul>
+</div>
+<div class="block full2">
+    <!--TAB标签-->
+    <div class="block-title">
+
+        <ul class="nav nav-tabs" id="panel-heading" style="background: linear-gradient(to right,pink ,#5ccdde,#8ae68a,#e0e0e0);">
+            <li style="width: 50%;" align="center" class="active"><a href="#shop" data-toggle="tab"><span style="font-weight:bold"><i class="fa fa-shopping-bag fa-fw"></i> 下单</span></a></li>
+            <li style="width: 50%;" align="center"><a href="#search" data-toggle="tab" id="tab-query"><span style="font-weight:bold"><i class="fa fa-search"></i> 查询</span></a></li>
+            <li style="width: 25%;" align="center" class="hidden"><a href="#Substation" data-toggle="tab"><span style="font-weight:bold"><font color="#ff0000"><i class="fa fa-coffee fa-fw"></i> 分站</span></font></a></li>
+            <li style="width: 25%;" align="center" class="hide"><a href="#gift" data-toggle="tab"><span style="font-weight:bold"><i class="fa fa-gift fa-fw"></i> 抽奖</span></a></li>
+            <li style="width: 25%;" align="center" class="hide"><a href="#cardbuy" data-toggle="tab"><span style="font-weight:bold"><i class="glyphicon glyphicon-th"></i> 卡密</span></a></li>
+            <li style="width: 25%;" align="center" class="hide"><a href="#chat" data-toggle="tab"><span style="font-weight:bold"><i class="fa fa-comments"></i> 聊天</span></a></li>
+        </ul>
+    </div>
+    <!--TAB标签-->
+    <div class="tab-content">
+        <!--在线下单-->
+        <div class="tab-pane active" id="shop">
+            <div id="goodTypeContents">
+                <p class="kefu">客服QQ：476926533，客服微信：g476926533</p>
+                <p class="tips">下单请点分类点商品，然后在作品ID粘贴作品链接点立即下单，最后扫码付款点立即购买。</p>
+                <div class="form-group" id="display_selectclass">
+                    <div class="input-group">
+                        <div class="input-group-addon">选择分类</div>
+                        <select name="tid" id="cid" class="form-control" onchange="getGoods()"><option value="0">请选择分类</option></select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="input-group">
+                        <div class="input-group-addon">选择商品</div>
+                        <select name="tid" id="tid" class="form-control" onchange="getGoodsDetail();"><option value="0">请选择商品</option></select>
+                    </div>
+                </div>
+                <div class="form-group" id="display_price" style="display:none;center;color:#4169E1;font-weight:bold">
+                    <div class="input-group">
+                        <div class="input-group-addon">商品价格</div>
+                        <input type="text" name="need" id="need" class="form-control" style="center;color:#4169E1;font-weight:bold" disabled />
+                    </div>
+                </div>
+                <div class="form-group" id="display_left" style="display:none;">
+                    <div class="input-group">
+                        <div class="input-group-addon">库存数量</div>
+                        <input type="text" name="leftcount" id="leftcount" class="form-control" disabled />
+                    </div>
+                </div>
+                <div class="form-group" id="display_num" style="display:none;">
+                    <div class="input-group">
+                        <div class="input-group-addon">下单份数</div>
+                        <span class="input-group-btn"><input id="num_min" type="button" class="btn btn-info" style="border-radius: 0px;" value="━"></span>
+                        <input id="num" name="num" class="form-control" type="number" min="1" value="1" />
+                        <span class="input-group-btn"><input id="num_add" type="button" class="btn btn-info" style="border-radius: 0px;" value="✚"></span>
+                    </div>
+                </div>
+                <div class="form-group" id="display_VideoNo" style="display:none;">
+                    <div class="input-group">
+                        <div class="input-group-addon">作品Id</div>
+                        <input type="text" name="VideoNo" id="VideoNo" class="form-control" />
+                    </div>
+                </div>
+                <div class="form-group" id="display_PlaceOrder" style="display:none;">
+                    <div class="input-group">
+                        <div class="input-group">
+                            <div class="input-group-addon">联系手机/QQ</div>
+                            <input type="text" name="PlaceOrder" id="PlaceOrder" class="form-control" />
+                        </div>
+                    </div>
+                </div>
+                <div id="alert_frame" class="alert alert-success animated rubberBand" style="display:none;background: linear-gradient(to right,#71D7A2,#5ED1D7);font-weight: bold;color:white;"></div>
+                <div class="form-group">
+                    <input type="button" id="submit_buy" onclick="createOrder()" class="btn btn-primary btn-block" value="立即下单">
+                </div>
+
+                <div class="alert alert-success" id="display_SerialNumber" role="alert" style="display:none;">
+
+                </div>
+                <div class="form-group" id="display_ercode" style="display:none;">
+                    <div class="col-xs-12 col-md-6">
+                        <a href="#" class="thumbnail">
+                            <img src="~/Content/assets/img/Alipay.jpg" style="max-width:200px;max-height:280px;" />
+                        </a>
+                    </div>
+                    <div class="col-xs-12 col-md-6">
+                        <a href="#" class="thumbnail">
+                            <img src="~/Content/assets/img/WeiXin.jpg" style="max-width:200px;max-height:280px;" />
+                        </a>
+                    </div>
+                </div>
+                <div class="form-group buy-goods" style="display:none;">
+                    <input type="button" id="submit_buy" onclick="commit()" class="btn btn-success btn-block" value="立即购买">
+                </div>
+                <div class="panel-body border-t" id="alert_cart" style="display:none;"><i class="fa fa-shopping-cart"></i>&nbsp;当前购物车已添加<b id="cart_count">0</b>个商品<a class="btn btn-xs btn-danger pull-right" href="javascript:openCart()">购物车列表</a></div>
+            </div>
+        </div>
+        <!--在线下单-->
+        <!--查询订单-->
+        <div class="tab-pane" id="search">
+            <div class="col-xs-12 well well-sm animation-pullUp"><span class="label label-primary">待处理</span> 说明正在努力提交到服务器！<p></p><p></p><span class="label label-success">已完成</span> 并不是刷完了只是开始刷了！<p></p><p></p><span class="label label-warning">处理中</span> 已经开始为您开单 请耐心等！<p></p><p></p><span class="label label-danger">有异常</span> 下单信息有误 联系客服处理！</div>
+            <div class="form-group">
+                <div class="input-group">
+                    <div class="input-group-btn">
+                        <select class="form-control" id="searchtype" style="padding: 6px 4px;width:90px"><option value="1">订单号</option></select>
+                    </div>
+                    <input type="text" name="qq" id="qq3" value="" class="form-control" placeholder="请输入要查询的内容" onkeydown="if(event.keyCode==13){submit_query.click()}" required />
+                    @*<span class="input-group-btn"><a href="#cxsm" data-toggle="modal" class="btn btn-warning" style="width:50px;height:30px;margin-left:10px;"><i class="glyphicon glyphicon-exclamation-sign"></i></a></span>*@
+                </div>
+            </div>
+            <input type="button" id="submit_query" class="btn btn-primary btn-block" onclick="queryOrder()" value="立即查询">
+            <div id="result2" class="form-group" style="display:none;">
+                <center><small><font color="#ff0000">手机用户可以左右滑动</font></small></center>
+                <div class="table-responsive">
+                    <table class="table table-vcenter table-condensed table-striped">
+                        <thead><tr><th>下单账号</th><th>商品名称</th><th>数量</th><th class="hidden-xs">购买时间</th><th>状态</th>@*<th>操作</th>*@</tr></thead>
+                        <tbody id="list">
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <br />
+        </div>
+        <!--查询订单-->
+        <!--开通分站-->
+        <div class="tab-pane" id="Substation">
+            <table class="table table-borderless table-pricing">
+                <tbody>
+                    <tr class="active">
+                        <td>
+                            <h4><i class="fa fa-cny fa-fw"></i><strong>0元</strong> / <i class="fa fa-cny fa-fw"></i><strong>300元</strong><br><small>普及版 / 专业版两种分站供你选择</small></h4>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>0元普及版享受进价9.8折</td>
+                    </tr>
+                    <tr>
+                        <td>300元专业版享受进价7折</td>
+                    </tr>
+                    <tr>
+                        <td>宝妈、学生等网络兼职首选</td>
+                    </tr>
+                    <tr>
+                        <td>分站满10元即可申请提现</td>
+                    </tr>
+                    <tr>
+                        <td><strong>轻轻松松推广日赚1000+不是梦</strong></td>
+                    </tr>
+                    <tr class="active">
+                        <td>
+                            <a href="http://ppjs.top/user/regsite.php" target="_blank" class="btn btn-effect-ripple btn-danger"><i class="fa fa-arrow-right"></i> 马上开通</a>
+                            <a href="http://ppjs.top/user/" target="_blank" class="btn btn-effect-ripple btn-primary"><i class="fa fa-arrow-right"></i> 分站后台</a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="text-muted">
+                            <small><em>* 欢迎加入网赚大家庭！</em></small>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!--开通代理-->
+        <!--抽奖-->
+        <div class="tab-pane" id="gift">
+            <div class="panel-body text-center">
+                <div id="roll">点击下方按钮开始抽奖</div>
+                <hr>
+                <p>
+                    <a class="btn btn-info" id="start" style="display:block;">开始抽奖</a>
+                    <a class="btn btn-danger" id="stop" style="display:none;">停止</a>
+                </p>
+                <div id="result"></div><br />
+                <div class="giftlist" style="display:none;"><strong>最近中奖记录</strong><ul id="pst_1"></ul></div>
+            </div>
+        </div>
+        <!--抽奖-->
+        <!--版本介绍-->
+        <div class="modal fade" align="left" id="userjs" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 class="modal-title" id="myModalLabel">版本介绍</h4>
+                    </div>
+                    <div class="block">
+                        <div class="table-responsive">
+                            <table class="table table-borderless table-vcenter">
+                                <thead>
+                                    <tr>
+                                        <th style="width: 100px;">功能</th>
+                                        <th class="text-center" style="width: 20px;">普及版/专业版</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr class="active">
+                                        <td>专属代刷平台</td>
+                                        <td class="text-center">
+                                            <span class="btn btn-effect-ripple btn-xs btn-success"><i class="fa fa-check"></i></span>
+                                            <span class="btn btn-effect-ripple btn-xs btn-success"><i class="fa fa-check"></i></span>
+                                        </td>
+                                    </tr>
+                                    <tr class="">
+                                        <td>三种在线支付接口</td>
+                                        <td class="text-center">
+                                            <span class="btn btn-effect-ripple btn-xs btn-success"><i class="fa fa-check"></i></span>
+                                            <span class="btn btn-effect-ripple btn-xs btn-success"><i class="fa fa-check"></i></span>
+                                        </td>
+                                    </tr>
+                                    <tr class="success">
+                                        <td>专属网站域名</td>
+                                        <td class="text-center">
+                                            <span class="btn btn-effect-ripple btn-xs btn-success"><i class="fa fa-check"></i></span>
+                                            <span class="btn btn-effect-ripple btn-xs btn-success"><i class="fa fa-check"></i></span>
+                                        </td>
+                                    </tr>
+                                    <tr class="">
+                                        <td>赚取用户提成</td>
+                                        <td class="text-center">
+                                            <span class="btn btn-effect-ripple btn-xs btn-success"><i class="fa fa-check"></i></span>
+                                            <span class="btn btn-effect-ripple btn-xs btn-success"><i class="fa fa-check"></i></span>
+                                        </td>
+                                    </tr>
+                                    <tr class="info">
+                                        <td>赚取下级代理提成</td>
+                                        <td class="text-center">
+                                            <span class="btn btn-effect-ripple btn-xs btn-danger"><i class="fa fa-close"></i></span>
+                                            <span class="btn btn-effect-ripple btn-xs btn-success"><i class="fa fa-check"></i></span>
+                                        </td>
+                                    </tr>
+                                    <tr class="">
+                                        <td>设置商品价格</td>
+                                        <td class="text-center">
+                                            <span class="btn btn-effect-ripple btn-xs btn-success"><i class="fa fa-check"></i></span>
+                                            <span class="btn btn-effect-ripple btn-xs btn-success"><i class="fa fa-check"></i></span>
+                                        </td>
+                                    </tr>
+                                    <tr class="warning">
+                                        <td>设置下级代理商品价格</td>
+                                        <td class="text-center">
+                                            <span class="btn btn-effect-ripple btn-xs btn-danger"><i class="fa fa-close"></i></span>
+                                            <span class="btn btn-effect-ripple btn-xs btn-success"><i class="fa fa-check"></i></span>
+                                        </td>
+                                    </tr>
+                                    <tr class="">
+                                        <td>开通下级代理</td>
+                                        <td class="text-center">
+                                            <span class="btn btn-effect-ripple btn-xs btn-danger"><i class="fa fa-close"></i></span>
+                                            <span class="btn btn-effect-ripple btn-xs btn-success"><i class="fa fa-check"></i></span>
+                                        </td>
+                                    </tr>
+                                    <tr class="danger">
+                                        <td>赠送专属精致APP</td>
+                                        <td class="text-center">
+                                            <span class="btn btn-effect-ripple btn-xs btn-danger"><i class="fa fa-close"></i></span>
+                                            <span class="btn btn-effect-ripple btn-xs btn-success"><i class="fa fa-check"></i></span>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <center style="color: #b2b2b2;"><small><em>* 自己的能力决定着你的收入！</em></small></center>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--版本介绍-->
+        <!--卡密下单-->
+        <div class="tab-pane" id="cardbuy">
+            <div class="form-group">
+                <div class="input-group">
+                    <div class="input-group-addon">输入卡密</div>
+                    <input type="text" name="km" id="km" value="" class="form-control" onkeydown="if(event.keyCode==13){submit_checkkm.click()}" required />
+                </div>
+            </div>
+            <input type="submit" id="submit_checkkm" class="btn btn-primary btn-block" value="检查卡密">
+            <div id="km_show_frame" style="display:none;">
+                <div class="form-group">
+                    <div class="input-group">
+                        <div class="input-group-addon">商品名称</div>
+                        <input type="text" name="name" id="km_name" value="" class="form-control" disabled />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="input-group">
+                        <div class="input-group-addon" id="km_inputname">下单ＱＱ</div>
+                        <input type="text" name="inputvalue" id="km_inputvalue" value="" class="form-control" required />
+                    </div>
+                </div>
+                <div id="km_inputsname"></div>
+                <div id="km_alert_frame" class="alert alert-success animation-pullUp" style="display:none;font-weight: bold;"></div>
+                <input type="submit" id="submit_card" class="btn btn-primary btn-block" value="立即购买">
+                <div id="result1" class="form-group text-center" style="display:none;">
+                </div>
+            </div>
+            <br />
+        </div>
+        <!--卡密下单-->
+        <!--卡密下单-->
+        <div class="tab-pane" id="chat">
+        </div>
+        <!--卡密下单-->
+    </div>
+</div>
