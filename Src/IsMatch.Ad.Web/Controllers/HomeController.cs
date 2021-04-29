@@ -12,7 +12,7 @@ namespace IsMatch.Ad.Web.Controllers
         public ActionResult Index()
         {
             // http://www.xy-door.com/index2.php
-            return View("DxyIndex");
+            return View(/*"DxyIndex"*/);
         }
 
         public ActionResult DxyIndex()
